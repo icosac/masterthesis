@@ -1,0 +1,157 @@
+%\chapter{22/10/2019}
+%\section{Opportunistic routing in Wireless Sensor networks ORW}
+%In netrorks where is difficult to keep a topology, then sending broadcast to
+%all nodes is a good idea. The problem is to identify the nodes that are best
+%to forward a message and no node should forward a packet if any other node is
+%transmitting. It' called opportunistic because it's not really deterministic
+%like hte previous algo. \newline
+%2012 is the year when ORW was thought. \newline
+%There are some problems, like it is prone to cycles.
+%\section{Sync transmission}
+%We have talked about this with A-MAC. The capture effect works independently
+%from the content of the packet.\newline In practice the standard T should be
+%half that because of frequency, but it has been shown that there is no problem
+%also with this.
+%\subsection{Glossy}
+%There are two fundamental parameters:
+%\begin{itemize}
+%	\item Slot: must be enough to accomodate a transmission and have effect on
+%	life time: if they are two big you spend all time in listening, and also
+%	drifting.
+%	\item Number of retransmission: this is the main configuration parameter. If
+%	the counter is incremented above this value then it's reseted. 
+%\end{itemize}
+%We can notice from slide 47 that latency does not increase or decrease at the
+%increasing of the number of retransmission since few packets are lost and they
+%not influence.\newline
+%\subsection{Design and deployment guidelines}
+%Many concurrent transmitter and/or hopes is bad, because there is a higher
+%probability that some nodes are out of synch and this leads to collision. Also
+%with hop there is some delay that is introduced and also in this case there is
+%a higher probability of collision. \newline
+%A large power imbalance between concurrent transmitters is good.\newline
+%Large packets are bad (127 bytes are already too many). Channel business is
+%not a problem since we are working in synchronization. The problem is that the
+%more bits, the higher the probability of a bit failing and corrupting the
+%packet. Moreover this is bad because if we are on the verge of drifting, and
+%one node is slower than the others, we are going to drift. \newline
+%\subsection{LWB}
+%The idea is that you schedule the entire network alternating phases where the
+%network is active and some where the network is inactive. When is active there
+%is an initial flood (controller in slide 50 corresponds to a Glossy flood) and
+%tells all the other nodes what to do in the period. The other nodes to their
+%own floods in isolation transmitting their data without collision (not sure
+%you can talk about collision). There is a slot fro contention were the nodes
+%in contention flood together to see if something reaches. The information
+%gathered from this last flood are going to be used to reschedule the
+%transmission.
+%\subsection{Chaos}
+%Network wide aggregation: for example we want to compute the average
+%temperature in the network. Normally you would create the tree, collect the
+%data and then compute the value, and if the other nodes needed to know the
+%value, then you should have sent it back. \newline
+%Chaos exploits Glossy's floods. Each packet is made of flags and payload.
+%There are as many flags as the nodes in the network. Then when a node
+%transmits its packet, when it gets received is retransmitted adding some
+%information, for example if we wanted to check the maximum, we want to change
+%the content in the payload and set the packet of the nodes resending it. Note
+%that C send doesn't get to A because of the capture effect (since the packets
+%from B and C are different there can't be constructive interference. \newline
+%Since this is flooded, it gets reliably received from all the nodes. 
+%\chapter{Crystal and Ultra low Power Wireless Sensor Networks}
+%
+%\chapter{29/10/2019}
+%\chapter{Tunnel}
+%\chapter{Real-world}
+%\chapter{25/10/2019}
+%Prossima lezione 26/11/2019 non ci sarà.\newline
+%\chapter{Bluetooth low energy}
+%Enhanchments worked specially on speed since no cable, but still people want
+%good speed. \newline
+%\section{Bluetooth clasic}
+%Bluetooth works in the 2.4GHz band because it gives nice properties and is ISM
+%band so no need to buy. \newline
+%79 channles, each with 1MZh bandwith.\newline
+%Uses a frequency-hopping spread spectrum: instead of transmitting on a given
+%frequency, we continue to change frequency so to be more resilient to
+%interference. To do this we hope from frequency to frequency in a coordinated
+%way. \newline
+%From version 1.2 bluetooth uses adaptive FHSS: instead of hopping blindly,
+%there are mechanisms to understand which frequency are being used around and
+%avoid them.\newline
+%Bluetooth specifies the entire stack up to application, and even provides an
+%API as a profile which give the possibility to support more specifically
+%applications. \newline
+%The original architecture was master-slave: the master effectively determines
+%the schedule and it coordinates the slave by telling them when to transmit, so
+%like TDMA.\newline
+%There are 3 type of networks:
+%\begin{itemize}
+%	\item point-to-point: 1 master, 1 slave
+%	\item piconet: star topology: 1 master 7 slaves. 
+%	\item scatternet: interconnections of piconet. 
+%\end{itemize}
+%The standard did not specify a routing protocol for it.
+%\section{Enhancements}
+%Unacceptable for some application to have lower power rates. \newline
+%\section{BLE}
+%Reduced number of channel: 40 channels of 2MHz. Only 3 channels are used for
+%device discovering, carefully chosen in order to avoid overlapping. This
+%allowed a faster device discovering and a lower consumption since instead of
+%32 channels, only 3 are used. \newline
+%Even though the names are different, yet once the connection is established,
+%master-slave connection is bilateral, but yet the master choose the timing.
+%
+%\chapter{02/12/2019}
+%\section{Birthday protocol}
+%We can also choose $n$ and $k$ based on what we want our duty cycle to be.
+%\newline
+%One problem with this is collision between messages. \newline
+%Moreover, even if little, there is a possibility that the two nodes will
+%discover each other since they are always picking different slots. So we would
+%like to have something deterministic.
+%\section{Disco}
+%The node wakes up every $P1$, $P_2$ prime numbers.\newline
+%we are guarantee that they meet after the product of the two primes. \newline
+%One problem is that, since we want to match a certain duty cycle, and since
+%prime numbers are not uniformally distributed, then it's not guaranteed that
+%we can achieve every duty cycle.
+%\section{U-connecy}
+%Based on primes, but only 1 per node (usually the same per all
+%nodes).\newline
+%A node can be in discovery mode and so wake up every $P$ and stay awake for 1
+%slot, or in transmission mode, which happens every $P^2$ slots and lasts for
+%$\frac{p+1}{2}$, that is it stays awake for half of the period. \newline
+%This shows better performance than Disco, but still there are problems with
+%prime numbers. \newline
+%Probability method have very good avarage discoverying channels pretty fast,
+%but some may never get discovered. With prime-based we can for sure get all
+%channles, but we don't have a good latency on average as probabilitstic.
+%\section{Searchlight}
+%This protocol have both components: imagine to have two nodes with the same
+%duty cycle. \newline
+%The protocol says to choose a fixed period $t$, which does not need to be
+%prime, then we fix a slot said anchor slot and then. But keeping the node up
+%for $t/2$ is not good, then we move the probe slot around in two ways:
+%\begin{itemize}
+%	\item Sequential: the slot in the probe period is +1 with respect to the one
+%	before. We are guaranteed to overlap in $\frac{t^2}{2}$ slots. A yellow on
+%	yellow is still a match. 
+%	\item Random probing: we pick one of the probe slots at random. I still can
+%	move around, but the pattern is not deterministic. 
+%\end{itemize}
+%Every slots send and advertisment every end of the slot, but one coverage is
+%enough, so we could half them. This though won't work if the slot are very
+%aligned: just enlarge the slots of something.\newline
+%R and S stands for random and sequential. Striped is the one with less
+%beacons. 
+%\section{BLEnd}
+%Many of this work is very abstract. \newline
+%Does not take into account not even collision between nodes.\newline
+%The goal was to have predictable performance taking into account collisions
+%and hardware limitations. \newline
+%Slots are not fundamental, also BLE does not talk about slots. If we take this
+%out we have a continuum, which allows us to not have bounds. \newline
+%Moreover all this protocols assume a bidirectional discovery, A discovers B
+%and viceversa, but this i snot necessary in many cases. 
+
