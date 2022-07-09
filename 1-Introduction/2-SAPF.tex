@@ -1,5 +1,26 @@
 \section{Single-Agent Path Finding}
 \label{sec:SAPF}
-The \acrf{sapf} problem 
-
+The \acrf{sapf} problem is the problem of finding the best path on a graph 
+between two given nodes or vertexes. Such problem is of great importance in 
+various scenario. Indeed, one of the main algorithms used to solve the 
+\acrs{sapf} problem, \astar, has been successfully applied to GPS localization
+in order to improve the waypoints accuracy for remote controlled 
+agents~\cite{astar_gps}. Nevertheless, the field in which \acrl{sapf} has found
+the most importance is the field of robot routing and planning, as the name 
+also suggests. The two problem differentiate mainly on the aspects that they 
+consider: while a routing problem consider the topology of the environment, a 
+planning problem only considers the relationships between positions. 
+\acrs{sapf} algorithms have been successfully implemented in both problems: 
+in robot routing, they have been used to search a graph constructed by 
+environmental data in order to avoid obstacles and to explore possible 
+routes~\cite{robot_routing}, and they have also been adopted to run in more 
+than 2 dimensions such as when running manipulators~\cite{robot_mani}. \newline
+This work though focuses on the path planning problem that can be defined as 
+follows:
+\begin{definition}[Single-Agent Path Finding]
+Given a graph $G = (V,E)$, where $V$ is the set of the vertexes and $E$ the set
+of edges joining two vertexes, the \acrf{SAPF} problem consists in finding the
+shortest and feasible plan $\pi$ between a starting vertex $S\in V$ and a final 
+one $F\in V$.
+\end{definition}
 

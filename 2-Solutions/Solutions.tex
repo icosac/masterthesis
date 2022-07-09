@@ -1,0 +1,37 @@
+\chapter{Algorithms Descriptions}
+\label{ch:solutions}
+In this chapter, the main algorithms used to solve the \acrf{MAPF} are
+described. The focus is first put on constraint programming showing promising
+results obtained by modelling the problem with constraints. \newline
+Then state-of-the-art algorithms using imperative programming language are
+presented and how they have revised to adapt to the 
+%
+%
+%
+\newcommand{\mks}[1]{\texttt{mks(}#1\texttt{)}} 
+\newcommand{\neigh}[1]{\texttt{neigh(}#1\texttt{)}}
+\section{Notation}
+The following symbols are used in the rest of the thesis:
+\begin{itemize}
+  \item $\mathcal{A}$ or \texttt{agents}, the set of all the agents;
+  \item $S=initPos$ the initial positions of the agents;
+  \item $E=endPos$ the final positions of the agents;
+  \item $\pi_i$ a valid plan for an agent $i$;
+  \item \mks{$\pi_i$} the makespan of the plan for agent $i$, i.e., the 
+    length of nodes traversed by agent $i$;
+  \item $t_f= \texttt{M}=\mks{\pi_i} : \forall j \in \mathcal{A},~
+    \mks{\pi_i}\geq \mks{\pi_j}$ the maximum makespan between all agents;
+  \item $t_i$ the initial step that can be either 0 or 1 depending on the
+    programming language starting index;
+  \item $\mathcal{S}=\texttt{steps}=\{t_i...t_f\}$ the set of the steps; 
+  \item $\mathcal{N}=\texttt{nodes}$ a set containing the nodes of the graph;
+  \item $\neigh{n}$ the set of neighbors connected to a node $n$;
+  \item $X[\texttt{steps}][\texttt{nodes}][\texttt{agents}]$ a boolean matrix
+    which cell is 1 if and only if a node is occupied by an agent at a certain
+    timestamp. 
+\end{itemize}
+
+%
+%
+%
+\import{./}{1-CP}
