@@ -1,44 +1,46 @@
 \section{Safe Motion Planning}
 In environments shared by both humans and robots, one of the main study
-subjects is safe motion planning. Firstly, Purwin et al. (2008) proposed a path
-planning algorithm for decentralized agents able to ensure collision avoidance,
-proven by using reserved areas. Prioritized path Planning (PP) is one of the
-main techniques used to plan robotics paths for multiple agents. It was first
-explored by Erdmann et al. (1987) and it has then been refined by van den Berg
-et al. (2005) providing a generally applicable approach without limitations to
-the form or degrees of freedom of the robots. Later, Michal Čáp et al. (2015)
-presented a revised algorithm of PP proving that if a solution exists, it
-guarantees to find a path for every robot to reach the final destinations. The
-authors also provided an asynchronous decentralized algorithm for PP that has
-been proven to find paths for all the robots in the system and to terminate
-twice as fast. Another important factor for human-aware motion planning is the
-smoothing of the trajectory which is done by interpolating the points with
-well-behaved curves. Frego et al (2020) proposed a novel solution using dynamic
-programming for the multi-point Markov-Dubins problem and Saccon et al (2021)
-refined the solution using parallel programming on GPUs. \newline
+subjects is safe motion planning. Firstly, a path planning algorithm for
+decentralized agents able to ensure collision avoidance was proposed in 2008,
+and it was proven by using reserved areas~\cite{purwin2008}. Prioritized path
+Planning (PP) is one of the main techniques used to plan robotics paths for
+multiple agents. It was first explored in 1987~\cite{erdmann1987} and it has
+then been refined providing a generally applicable approach without limitations
+to the form or degrees of freedom of the robots~\cite{vandenberg2005}. Later on
+in 2015, a revi a revised algorithm of PP was presented, proving that if a
+solution exists, it guarantees to find a path for every robot to reach the
+final destinations~\cite{michal2015}. At the same time, an asynchronous
+decentralized algorithm for PP that has been proven to find paths for all the
+robots in the system and to terminate twice as fast was also
+provided~\cite{michal2015}. Another important factor for human-aware motion
+planning is the smoothing of the trajectory which is done by interpolating the
+points with well-behaved curves:~\cite{frego2020} proposed a novel solution
+using dynamic programming for the multi-point Markov-Dubins problem which was
+later refined using parallel programming on GPUs~\cite{saccon2021}. \newline
 The integration of human motion in the planning has been studied for
 single-agent motion in various works that can then be adapted to a multi-agent
-scenario. Fiorini et al. (1998) proposed a first reactive model based on
-velocity obstacles, i.e., a set of velocities which the robot should not use to
-avoid a dynamic obstacle. Boldrer et al (2020) proposed a refinement of this
-model to be applied to multi-agent navigation by using the velocity obstacle
-paradigm only for local and reactive navigation, while using RTT* to generate
-the global path of each robot, showing a more human-like and collaborative
-behaviour of the robots. Another effective solution was proposed by Claes et al
-(2018), who used a combination of velocity obstacles, dynamic windows, that is,
-a set of velocities easily reachable by the robot that would allow it to either
-avoid the obstacle or to stop, and Monte Carlo sampling to account for the
-dynamic obstacles. Other solutions are based on learning-based methods and
-predictive planners. The former suffers from the generalization problem,
-resulting in troublesome solutions to be deployed in sensitive environments due
-to the difficulty in providing safety guarantees. The latter instead produce
-human-aware paths if the models are well-fitted and can rely on precise
-estimations. Indeed, one of the main difficulties of multi-agent navigation in
-environments with the presence of humans is to find a good model for the human
-motion. Bevilacqua et al (2018) and Antonucci et al (2021) showed promising
-results using headed social force model, i.e., social force model also
-considering the direction of the person. Bajcsy et al (2019) proved that also
-the maximum-entropy model was able to offer safe navigation, for which the
-human dynamics are affected by an action drawn from a Boltzmann probability
-distribution.
+scenario. A first reactive model based on velocity obstacles, i.e., a set of
+velocities which the robot should not use to avoid a dynamic obstacle was
+proposed in 1998~\cite{fiorini1998}. In 2020, a refinement was presented which
+was meant to be applied to multi-agent navigation by using the velocity
+obstacle paradigm only for local and reactive navigation, while using RTT* to
+generate the global path of each robot, showing a more human-like and
+collaborative behaviour of the robots~\cite{boldrer2020}. Another effective
+solution was proposed in 2018 using a combination of velocity obstacles,
+dynamic windows, that is, a set of velocities easily reachable by the robot
+that would allow it to either avoid the obstacle or to stop, and Monte Carlo
+sampling to account for the dynamic obstacles~\cite{claes2018}. Other solutions
+are based on learning-based methods and predictive planners. The former suffers
+from the generalization problem, resulting in troublesome solutions to be
+deployed in sensitive environments due to the difficulty in providing safety
+guarantees. The latter instead produce human-aware paths if the models are
+well-fitted and can rely on precise estimations. Indeed, one of the main
+difficulties of multi-agent navigation in environments with the presence of
+humans is to find a good model for the human motion. Recent
+works~\cite{bevilacqua2018}~\cite{conflict_detection} showed promising results
+using headed social force model, i.e., social force model also considering the
+direction of the person. In 2019, it has been proved that also the
+maximum-entropy model was able to offer safe navigation, for which the human
+dynamics are affected by an action drawn from a Boltzmann probability
+distribution~\cite{bajcsy2019}.
 

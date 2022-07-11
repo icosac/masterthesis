@@ -37,18 +37,18 @@ deterministic (e.g. Dijkstra) and heuristic ones (e.g. \astar).
 %
 \subsection{Dijkstra}
 The Dijkstra algorithm~\cite{dijkstra} is meant to find the shortest path 
-between two nodes on a graph which edges have only positive values. Note that
+between two nodes on a graph whose edges have only positive values. Note that
 the graph needs to be strongly connected, i.e., there must be at least one path
 between any two nodes. While this seems quite a strong limitation, industrial
-scenarios usually provide such graphs by the simple reasoning that no node can
+scenarios usually provide such graph; indeed, no node can
 be a sink since it must be possible for an agent to come back from each
 location, that is, usually graphs modelled on warehouses are either undirected, 
 and hence strongly connected, or directed but no node can be a sink. \newline
 The work of Dijkstra published in 1959~\cite{dijkstra} presents two possible
 algorithms, one to find the shortest path from one node to another and one to
 find a tree of minimum length starting from a node and reaching all the other
-nodes. This work focuses on the latter for which a brief description can be 
-found looking at the pseudo code Algorithm~\ref{algo:dijkstra}.
+nodes. This work focuses on the second aspect for which a brief description can
+be found looking at the pseudo code Algorithm~\ref{algo:dijkstra}.
 \begin{algorithm}
   \DontPrintSemicolon
   \caption{Description of the Dijkstra algorithm}
@@ -83,7 +83,7 @@ found looking at the pseudo code Algorithm~\ref{algo:dijkstra}.
   }
 \end{algorithm}\newline
 The complexity of the algorithm depends on the number of vertexes and edges.
-Moreover different and improved versions of the algorithm have different
+Moreover, different and improved versions of the algorithm have different
 worst-case performance, but the initial one proposed by Dijkstra runs in time
 $O((\abs{V}+\abs{E})\log\abs{V})$.\newline
 Finally, the protocol has been successfully used in robot path
@@ -106,13 +106,12 @@ expanded when it is added to the \texttt{OPEN} set to be analyzed later on.
 The choice of which nodes should be expanded and which not, is given by the
 heuristic function. Indeed, when examining the neighbors 
 $u\in \texttt{neigh(n)}$ of the considered node, \astar uses a heuristic 
-to estimate $h(u)$ to estimate the distance to the arrival vertex. Let $h*(u)$
-be the perfect heuristic, that is, a function that returns the correct distance
-from the node $u$ to the arrival vertex, then if $h*(u)$ is known for all the
-nodes, the best path is obtained just by choosing to go to the neighbor with
-the lower heuristic distance between neighbors. It has been proved that if
-$h(n)\leq h*(n)$, then the heuristic is admissible and \astar is
-optimal~\cite{astar}.
+to estimate $h(u)$ the distance to the arrival vertex. Let $h*(u)$ be the
+perfect heuristic, that is, a function that returns the correct distance from
+the node $u$ to the arrival vertex, then if $h*(u)$ is known for all the nodes,
+the best path is obtained just by choosing to go to the neighbor with the lower
+heuristic distance between neighbors. It has been proved that if $h(n)\leq
+h*(n)$, then the heuristic is admissible and \astar is optimal~\cite{astar}.
 
 
 
