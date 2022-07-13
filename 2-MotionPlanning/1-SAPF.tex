@@ -1,0 +1,112 @@
+\section{Single-Agent Path Finding}
+\label{sec:SAPF}
+The \acrf{sapf} problem is the problem of finding the best path on a graph 
+between two given nodes or vertexes. Such problem is of great importance in 
+various scenarios. Indeed, one of the main algorithms used to solve the 
+\acrs{sapf} problem, \astar, has been successfully applied to GPS localization
+in order to improve the waypoints accuracy for remote controlled 
+agents~\cite{astar_gps}. Nevertheless, the field in which \acrl{sapf} has found
+the most importance is the field of robot routing and planning, as the problem 
+name also suggests. \acrs{sapf} algorithms have been successfully implemented
+in robot routing, where they have been used to search a graph constructed by
+environmental data in order to avoid obstacles and to explore possible
+routes~\cite{robot_routing}. Moreover, they have also been adopted to run in
+more than 2 dimensions such as when running manipulators~\cite{robot_mani}.
+\newline
+This thesis focuses on the path planning problem that can be defined as 
+follows:
+\begin{definition}[Single-Agent Path Finding]
+Given a graph $G = (V,E)$, where $V$ is the set of the vertexes and $E$ the set
+of edges joining two vertexes, the \acrf{SAPF} problem consists in finding the
+shortest feasible plan $\pi$ between a starting vertex $S\in V$ and a final one 
+$F\in V$. 
+\end{definition}
+A plan $\pi$ is the sequence of $s$ actions that take the agent from the 
+starting position $S$ to the final position $F$ in $s$ steps:
+\[ \pi=\{a_1...a_s\} : a_s(...a_2(a_1(S))...)=F \]
+Due to its definition, the \acrs{sapf} problem can be reduced to the problem of
+finding the shortest path on a graph. What follows is a brief description of
+the main algorithms that can be applied to \acrl{sapf} which can be divided in
+deterministic algorithms (e.g. Dijkstra) and heuristic ones (e.g. \astar).
+%
+%
+\subsection{Dijkstra}
+The Dijkstra algorithm~\cite{dijkstra} aims to find the shortest path 
+between two nodes on a graph whose edges have only positive values. Note that
+the graph needs to be strongly connected, i.e., there must be at least one path
+between any two nodes. While this seems quite a strong limitation, industrial
+scenarios usually provide such graph; indeed, no node can
+be a sink since it must be possible for an agent to come back from each
+location, that is, usually graphs modelled on warehouses are either undirected, 
+and hence strongly connected, or directed but no node can be a sink. \newline
+The work of Dijkstra published in 1959~\cite{dijkstra} presents two possible
+algorithms, one to find the shortest path from one node to another and one to
+find a tree of minimum length starting from a node and reaching all the other
+nodes. We focus on the second aspect for which a brief description can be found
+looking at the pseudo code Algorithm~\ref{algo:dijkstra}.
+\begin{algorithm}
+  \DontPrintSemicolon
+  \caption{Description of the Dijkstra algorithm}
+  \label{algo:dijkstra}
+
+  \KwIn{$G=(V,E)$ strongly connected graph}
+  \KwIn{$S$ initial node}
+  \KwIn{$F$ final node}\;
+
+  \KwData{\texttt{dist} vector of distances from $S$}
+  \KwData{\texttt{prev} vector of the nodes from which the path comes from}
+  \KwData{\texttt{OPEN} set of nodes to be considered}\;
+
+  \For{$v \in V$}{
+    $dist[v]\gets inf$\;
+    $prev[v]\gets NULL$\;
+    $\texttt{OPEN}.add(v)$
+  }
+  $dist[$S$]=0$\;
+  \;
+  \While{$\texttt{OPEN}$}{
+    $u \gets node from \texttt{OPEN} with smaller distance$\;
+    $\texttt{OPEN}.del(u)$\;
+    \;
+    \For{v $\in neighbors(u)$ still in \texttt{OPEN}}{
+      $tmp \gets dist[u] + E(u,v)$\;
+      \If{tmp  < dist[v] and dist[u] != inf}{
+        $dist[v]\gets tmp$\;
+        $prev[v]\gets u$\;
+      }
+    }
+  }
+\end{algorithm}\newline
+The complexity of the algorithm depends on the number of vertexes and edges.
+Moreover, different and improved versions of the algorithm have different
+worst-case performance, but the initial one proposed by Dijkstra runs in time
+$O((\abs{V}+\abs{E})\log\abs{V})$.\newline
+Finally, the algorithm has been successfully used in robot path
+planning~\cite{dijkstra1}~\cite{dijkstra2}~\cite{dijkstra3}.
+%TODO Add a picture of Dijkstra?
+%
+%
+\subsection{\astar}
+\astar is an heuristic best-first search algorithm for finding the shortest
+path on a graph~\cite{MAPF_overview}. It is also an admissible algorithm, that
+is, it is guaranteed to find an optimal from the starting node to the arrival
+one~\cite{astar}. \newline
+The idea of \astar is to direct the search over the nodes towards the arrival
+node without having to necessarily examine all the vertexes. To do so, \astar
+keeps a set of nodes to be visited, usually called \texttt{OPEN}, which is
+initially set to only the starting node, but then it is added with the
+neighbors that the algorithm deems worthy to be expanded. A node is said to be
+expanded when it is added to the \texttt{OPEN} set to be analyzed later on.
+\newline
+The choice of which nodes should be expanded and which not, is given by the
+heuristic function. Indeed, when examining the neighbors 
+$u\in \texttt{neigh(n)}$ of the considered node, \astar uses a heuristic 
+to estimate $h(u)$ the distance to the arrival vertex. Let $h*(u)$ be the
+perfect heuristic, that is, a function that returns the correct distance from
+the node $u$ to the arrival vertex, then if $h*(u)$ is known for all the nodes,
+the best path is obtained just by choosing to go to the neighbor with the lower
+heuristic distance between neighbors. It has been proved that if $h(n)\leq
+h*(n)$, then the heuristic is admissible and \astar is optimal~\cite{astar}.
+
+
+

@@ -1,0 +1,248 @@
+\section{Constraint Programming}
+As said, \acrf{MAPF} problem is NP-hard~\cite{lavalle} and so its possible to
+model it using constraint programming. Such technique has been deeply explored
+using different solvers for the constraints:
+\begin{itemize}
+  \item \acrf{CSP}: a set of logical and mathematical statements that must
+    satisfy a number of constraints~\cite{CSP};
+  \item \acrf{SAT}: a set of boolean formulas for which the solver tries to
+    find if there are a set o boolean variables such that the formulas are
+    true, i.e., satisfiable~\cite{SATSolver}. 
+  \item \acrf{MIP}: a set of linear equations that must be solved while
+    satisfying a list of constraints~\cite{MAPF_overview};
+\end{itemize}
+The first step was to take the model proposed by Bart\'{a}k et al. in 
+2017~\cite{picat1} and implement it using CPLEX \acrf{OPL}~\cite{OPL}. The goal 
+of moving the model to another programming language was to exploit the 
+straightforward similarity between the problem and \acrs{MIP} and also to 
+exploit the optimal performance of IBM's solver. \newline
+Picat is a logic programming language that allows the programmer to code a
+series of constraints as generally as possible and then to solve these by means
+of different solvers offered by the framework. Indeed, Picat can solve the
+coded constraints either with \acrs{SAT} solvers, or with \acrs{MIP} and also
+with a \acrs{CSP} solver. This actually allows for an easy and great comparison
+between the possible solvers, but in our study we focus on having a reliable,
+easy-to-implement and especially easy-to-maintain solver. Picat presents an 
+initial steep learning curve, which does not comply with the easy-to-implement
+and easy-to-maintain requirement. \newline
+Instead, CPLEX has a much nice learning curve (largely but badly documented,
+Ed.) with an easy to pick up idea of how the solver works and a clear
+distinctions of the phases in which the programmer should divide their code.
+This is particularly noticeable if one starts writing the code using \acrs{OPL}
+and the dedicated problem. A CPLEX program structure 
+%TODO add code of general structure
+is usually divided in:
+\begin{itemize}
+  \item Pre-processing: we used this step to ensure that the input problem was
+    well-defined;
+  \item The input data: in \acrs{OPL} a \texttt{.dat} file is used to store the
+    input variables;
+  \item The objective function: CPLEX is able to minimize (or maximize) only
+    one objective function, but for our use-case this is enough;
+  \item A series of constraints to which the decision variables should be bound
+    to;
+  \item Post-processing: a series of instructions which conclude the program,
+    usually used to print and check the solution. 
+\end{itemize}
+We are now going to describe this steps. 
+%
+%
+\subsection{Variables}
+A variable in CPLEX can either be an input variable or a \textit{decision
+variable}, which is a variable whose value should be computed by the solver.
+\newline
+The input variables in our cases are the following: 
+\begin{itemize}
+  \item \milc{n_agents}: the number of agents in the problem;
+  \item \milc{n_nodes}: the number of nodes in the graph;
+  \item \milc{n_steps}: the number of steps in which the problem is supposed to
+    be resolved;
+  \item \milc{connect[n_nodes][n_nodes]}: a non negative connectivity matrix of
+    the nodes;
+  \item \milc{n_goals[n_agents]}: a vector containing the number of goals each
+    agent has to complete;
+  \item \milc{max_goals}: the maximum number of goals an agent must reach;
+  \item \milc{init_pos[n_agents]}: a vector containing the initial positions of
+    all the agents;
+  \item \milc{end_pos[n_agents]}: a vector containing the final positions that
+    each agent should reach;
+  \item \milc{goal_pos[n_agents][max_goals]}: a list of lists of goal
+    positions, one list for each agent. 
+\end{itemize}
+Notice that \milc{n_steps} is not possible to be known a priori, hence the
+value is usually a simple estimation of what the actual solution would be. The
+value is refined during the execution: whenever a model is not solvable, it is
+incremented of one to check whether is possible to solve the scenario with more
+time. The value is incremented until a solution is found. \newline
+%TODO discuss more in deep how n_steps is set at the beginning.
+To solve the \acrs{MAPF} problem we use multiple decision variables. The
+primary one is the \milc{X[n_steps][n_nodes][n_agents]}, which is a boolean
+three dimensional matrix that keeps track of whether an agent $a_i$ is on node
+$n$ at time $t$. \newline
+To keep track of whether the agents have reached or not their goals, another
+three-dimensional matrix is created:
+\milc{goal_points[n_agents][max_goals][n_steps]} that states whether an agent
+$a_i$ has reached a certain goal $g$ at a certain moment $t$. \newline
+Finally, we need to keep track of the movements of the agents so that we can
+then minimize the objective function of choice. This is done by using another
+matrix, \milc{movement[n_agents][n_steps]} that memorizes whether an agent
+$a_i$ at time $t$ has moved or not. \newline
+One final structure is needed to avoid swap conflicts, but will be discussed
+later on.
+%
+%
+\subsection{Objective Function}
+The objective function that was initially sought was the minimization of the 
+sum of the movements of all the agents in the graph, i.e., minimizing the 
+\textit{sum of costs}~\cite{picat1}. To do this in CPLEX one could simply 
+write:
+\begin{minted}{C}
+minimize sum(a in agents, s in steps) movement[a][s];
+\end{minted}
+which corresponds to just minimizing the sum of all the cells in the movement
+matrix. We will discuss later about the implementation in C++ of the constraint
+model and how it is possible to also minimize for the makespan. 
+%
+%
+\subsection{Constraints}
+The constrained defined by Bart\'{a}k et al.~\cite{picat1} are being reused:
+\begin{itemize}
+  \item Each agent $a$ cannot be on more than one node at each time:
+    \begin{equation}
+      \forall s \in \mathcal{S},~\Sum_{n \in \mathcal{N}} X[s][n][a]=1
+      \label{eq:picat1_one_agent_one_node}
+    \end{equation}
+  \item Each node $n$ cannot be occupied by more than one agent at each time:
+    \begin{equation}
+      \forall s \in \mathcal{S},~\Sum_{a \in \mathcal{A}} X[s][n][a]\leq 1
+      \label{eq:picat1_one_node_one_agent}
+    \end{equation}
+  \item If an agent $a$ occupies a node $n$ at time $s$, it will occupy a
+    neighboring node $m$ at time $s+1$:
+    \begin{equation}
+      X[s][n][a]=1 \quad \Rightarrow \Sum_{m\in \neigh{n}} X[s+1][m][a]=1
+      \label{eq:picat1_move_to_neigh}
+    \end{equation}
+\end{itemize}
+The above constraints do not bind the initial and final position of the
+agents. Indeed, in the code proposed in~\cite{picat1}, the assignment of
+the initial and final position for each agent is done via preprocessing,
+but this was not possible with \OPL since the decision variables cannot be
+directly modified. Two constraints were then introduced:
+\begin{equation}
+  \forall a \in \mathcal{A},~X[t_0][S_a][a] = 1
+  \label{eq:cplex_init_pos}
+\end{equation}
+\begin{equation}
+  \forall a \in \mathcal{A},~X[t_f][E_a][a] = 1
+  \label{eq:cplex_final_pos}
+\end{equation}
+%
+\subsubsection{Swap Conflict}
+Although the swap conflict was not taken into consideration due to the
+increased computational cost as stated in~\cite{picat1}, in this work, it 
+is important to avoid this type of conflict\footnote{We would like to let know 
+that also constructive email exchange has been carried out with the original 
+authors of the Picat algorithm, highlighting this aspect and a possible 
+solution}. A first constraint to avoid a swap conflict is the following:
+\begin{equation}
+  \begin{split}
+  \forall s \in\mathcal{S}/\{t_f\},~\forall a_i \in\mathcal{A},~\forall 
+  a_j\in \mathcal{A}/\{a_i\},~\forall n_i \in \mathcal{N},~\forall n_j \in 
+  \mathcal{N}/\{n_i\},\\
+  X[s][n_i][a_i] \wedge X[s][n_j][a_j] \Rightarrow
+  X[s+1][n_j][a_i]\wedge X[s+1][n_i][a_j]
+  \end{split}
+  \label{eq:cplex_no_swaps_no_edges}
+\end{equation}
+This though increases a lot the time required to find a solution. \newline 
+The best solution seems to follow the work from Bart\'{a}k and \v{S}ancara in
+2019~\cite{picat2}, who propose to use another structure to keep track of the
+edges occupation. For this reason the following three dimensional matrix is
+used: \milc{edges[n_nodes][n_nodes][n_steps]} which keeps track whether at time
+step $s$ the edge from node $n_i$ to node $n_j$ is being used or not. \newline
+The constrain is then so defined:
+\begin{equation}
+  \forall s \in \mathcal{S}/\{t_f\},~\forall n_i \in \mathcal{N},~\Sum_{n_j \in
+  \mathcal{N}/\{n_i\}} \texttt{edges}[n1][n2][s] + \texttt{edges}[n2][n1][s]
+  \leq 1
+  \label{eq:cplex_no_swaps}
+\end{equation}
+Bart\'{a}k and \v{S}ancara noticed that the model is easier to be solved while
+using easier constraints and more variables, than while using less variables
+and more difficult constraints. This is possible imputable to the fact that the
+solver needs to internally transform the constraints into decision variables
+and a constraint that is more complex provides more decision variables than a
+simpler constraint with a priori defined decision variables. 
+%
+\subsubsection{Tracking Movements}
+Since we need to minimize the objective function, we need to memorize the
+movements that are done in the simulation. This is done using the following 
+constraint:
+\begin{equation}
+  \begin{array}{c}
+    \forall s\in\mathcal{S},~\forall a\in\mathcal{A},~\forall
+    n_i\in\mathcal{N},~\forall n_j\in\mathcal{N},\\
+    X[s-1][n_i][a] \wedge X[s][n_j][a] \Rightarrow \texttt{movement}[a][s] = 
+    \texttt{connect}[n_i][n_j] \wedge \texttt{edges}[n_i][n_j][s]
+  \end{array}
+  \label{eq:movement_track}
+\end{equation}
+This constraints basically checks if the agent has moved, and if it has, then
+it assigns the cost of the edge to the movement matrix.
+%
+\subsubsection{Goal Reaching}
+Another aspect that was not taken into consideration in previous
+works~\cite{picat1, picat2} is the absence of intermediate goals that the
+agents have to meet before reaching the final destination. For this reason, the
+following constraints were added:
+\begin{equation}
+  \forall a \in \mathcal{A},~\forall s\in\mathcal{S},
+  \Sum_{g\in\texttt{n\_goals}[a]} \texttt{goal\_points}[a][g][s] \Rightarrow
+  x[s][\texttt{goal\_pos}[a][g]][a]
+  \label{eq:take_goals}
+\end{equation}
+Which means that if the goal has been taken in a given movement $s$ from a
+agent $a$, then the agent must be in said position in said moment. \newline
+We also need to make sure that an agent takes at most one goal in each
+timestamp and that also each goal is taken at most once:
+\begin{equation}
+  \forall s\in\mathcal{S},~\forall a \in\mathcal{A},~\Sum_{g\in
+  \{1,\hdots,\texttt{n\_goals[a]}\}} \texttt{goal\_points}[a][g][s] \leq 1
+  \label{eq:one_goal_one_step}
+\end{equation}
+\begin{equation}
+  \forall a\in\mathcal{A},~\forall g \in\{1,\hdots,\texttt{n\_goals[a]}\}, 
+  ~\Sum_{s\in \mathcal{S}} \texttt{goal\_points}[a][g][s] \leq 1
+  \label{eq:one_goal_per_life}
+\end{equation}
+Finally, constraint from Equation~\ref{eq:cplex_final_pos} must be modified in
+order to account for the fact that the agent cannot reach the final destination
+without having taken the goals:
+\begin{equation}
+  \forall a\in\mathcal{A} 
+  \Sum_{\substack{s\in\mathcal{S}\\g\in\{1,\hdots,\texttt{n\_goals}[a]\}}}
+  \texttt{goal\_points}[a][g][s] = \texttt{n\_goals}[a] \wedge X[t_f][E_a][a]
+  \label{eq:final_pos}
+\end{equation}
+%
+%
+\subsection{Pre-processing, main and Post-processing}
+\OPL allows also to have a main function that can be used to create the model,
+solve it and analyze whether it was possible to find a feasible solution or
+not. This is particularly useful to the \acrs{MAPF} problem since it is not
+possible to know a priori which are the correct lengths of the paths to follow.
+The idea is to stat with a lower bound on the number of steps of the solution
+and increase the value each time the solver could not find a solution until one
+could be found. Will discuss later with the C++ implementation of a better way
+to estimate the lower bound. \newline
+The post-processing instead is basically just a way to output information
+regarding the found solution. 
+%
+%
+\subsection{Python and C++ Implementations}
+Since CPLEX offers the possibility to integrate the solver in Python or C++, we
+tried to develop a more portable version of the software so that it could run
+on multiple platforms without requiring the IDE of \OPL. Moreover, having the
+possibility to run the constraint programming code in C++ and in Python would
+allow us to test the performance far more easily. 

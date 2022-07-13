@@ -2,6 +2,7 @@ add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
 add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
 
 $out_dir = 'out';
+#$aux_dir = 'out';
 
 sub run_makeglossaries {
   my ($base_name, $path) = fileparse( $_[0] ); #handle -outdir param by splitting path and file, ...
