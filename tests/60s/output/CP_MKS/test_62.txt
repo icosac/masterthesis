@@ -1,2 +1,0 @@
-Testing file: tests/test_62.json
-TDSP2 (10, 0, 0) (10, 0, 0)

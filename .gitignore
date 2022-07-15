@@ -1,6 +1,7 @@
 out/
 .DS_Store
 .swp
+tests/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
