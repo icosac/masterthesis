@@ -1,0 +1,129 @@
+Testing file: tests/test_16.json
+TDSP2 (12, 0, 0) (14, 0, 0)
+Found path from (12, 0, 0) to (14, 0, 0)
+(12, 0, 0) (5, 0, 0) (14, 0, 0) 
+(10, 0, 0) (17, 0, 0) (19, 0, 0) (3, 0, 0) (12, 0, 0) (1, 0, 0) (19, 0, 0) (5, 0, 0) (2, 0, 0) (12, 0, 0) (17, 0, 0) (0, 0, 0) (11, 0, 0) (5, 0, 0) (11, 0, 0) (3, 0, 0) (12, 0, 0) (2, 0, 0) (12, 0, 0) (10, 0, 0) 
+TDSP2 (14, 0, 0) (1, 0, 0)
+Found path from (14, 0, 0) to (1, 0, 0)
+(14, 0, 0) (8, 0, 0) (1, 0, 0) 
+(8, 0, 0) (20, 0, 0) (19, 0, 0) (8, 0, 0) (14, 0, 0) (8, 0, 0) (19, 0, 0) (14, 0, 0) (8, 0, 0) (14, 0, 0) (1, 0, 0) (14, 0, 0) (4, 0, 0) (0, 0, 0) (9, 0, 0) (20, 0, 0) (10, 0, 0) (2, 0, 0) (12, 0, 0) (14, 0, 0) 
+TDSP2 (13, 0, 0) (6, 0, 0)
+Found path from (13, 0, 0) to (6, 0, 0)
+(13, 0, 0) (6, 0, 0) 
+(13, 0, 0) (13, 0, 0) (13, 0, 0) (13, 0, 0) (3, 0, 0) (13, 0, 0) (19, 0, 0) (13, 0, 0) (2, 0, 0) (13, 0, 0) (1, 0, 0) (13, 0, 0) (0, 0, 0) (13, 0, 0) (9, 0, 0) (3, 0, 0) (13, 0, 0) (2, 0, 0) (13, 0, 0) (13, 0, 0) 
+TDSP2 (6, 0, 0) (2, 0, 0)
+Found path from (6, 0, 0) to (2, 0, 0)
+(6, 0, 0) (2, 0, 0) 
+(18, 0, 0) (6, 0, 0) (7, 0, 0) (8, 0, 0) (18, 0, 0) (0, 0, 0) (18, 0, 0) (11, 0, 0) (2, 0, 0) (12, 0, 0) (6, 0, 0) (2, 0, 0) (11, 0, 0) (18, 0, 0) (11, 0, 0) (6, 0, 0) (12, 0, 0) (6, 0, 0) (2, 0, 0) (13, 0, 0) 
+Testing solution 5
+Solution found with steps: 5
+ --------------------------------------------------
+Solution status: Optimal
+
+Solution found:
+ Objective value = 2
+
+--------------------------------------------------
+Step 0
+0 0 0 0 0 0 0 0 0 0 0 11 12 0 0 0 0 0 0 0 
+Step 1
+0 0 0 0 4 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Step 2
+0 1 0 0 0 0 0 0 0 0 0 0 0 13 0 0 0 0 0 0 
+Step 3
+0 1 0 0 0 0 0 0 0 9 0 0 0 0 0 0 0 0 0 0 
+Step 4
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+--------------------------------------------------
+Step 0 0 5
+0 0 0 0 
+- - 0 -
+- 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 
+Step 1 0 5
+0 0 0 0 
+- - 1 -
+- 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Step 2 0 5
+0 2 0 0 
+- - 0 -
+- 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+Step 3 0 5
+0 2 0 0 
+- - 0 -
+- 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+Step 4 0 5
+1 2 0 0 
+- - 0 -
+- 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+--------------------------------------------------
+agent 0 : 
+12 5 14 10 1 
+agent 1 : 
+13 6 2 2 2 
+--------------------------------------------------
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+Tried aggregator 3 times.
+MIP Presolve eliminated 8979 rows and 11763 columns.
+MIP Presolve modified 18 coefficients.
+Aggregator did 4176 substitutions.
+Reduced MIP has 2149 rows, 2360 columns, and 6846 nonzeros.
+Reduced MIP has 1039 binaries, 0 generals, 0 SOSs, and 2 indicators.
+Presolve time = 0.04 sec. (77.60 ticks)
+Found incumbent of value 3.000000 after 0.06 sec. (104.26 ticks)
+Probing fixed 107 vars, tightened 870 bounds.
+Probing changed sense of 11 constraints.
+Probing time = 0.04 sec. (33.16 ticks)
+Cover probing fixed 0 vars, tightened 14 bounds.
+Tried aggregator 3 times.
+MIP Presolve eliminated 1366 rows and 1511 columns.
+MIP Presolve added 13 rows and 0 columns.
+MIP Presolve modified 29 coefficients.
+Aggregator did 557 substitutions.
+Reduced MIP has 239 rows, 222 columns, and 788 nonzeros.
+Reduced MIP has 221 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (6.39 ticks)
+Probing fixed 7 vars, tightened 0 bounds.
+Probing time = 0.00 sec. (1.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 53 rows and 47 columns.
+Reduced MIP has 186 rows, 175 columns, and 612 nonzeros.
+Reduced MIP has 174 binaries, 1 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.60 ticks)
+Probing time = 0.00 sec. (0.48 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 186 rows, 175 columns, and 612 nonzeros.
+Reduced MIP has 174 binaries, 1 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.47 ticks)
+Probing time = 0.00 sec. (0.53 ticks)
+Clique table members: 501.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 16 threads.
+Root relaxation solution time = 0.00 sec. (0.47 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            3.0000        0.0000           100.00%
+      0     0        0.0000    27        3.0000        0.0000       19  100.00%
+*     0+    0                            2.0000        0.0000           100.00%
+      0     0        cutoff              2.0000        2.0000       35    0.00%
+Elapsed time = 0.16 sec. (157.49 ticks, tree = 0.01 MB, solutions = 2)
+
+Clique cuts applied:  4
+Cover cuts applied:  2
+Implied bound cuts applied:  16
+Zero-half cuts applied:  3
+Gomory fractional cuts applied:  2
+
+Root node processing (before b&c):
+  Real time             =    0.16 sec. (158.19 ticks)
+Parallel b&c, 16 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.16 sec. (158.19 ticks)
+
+Solution computed in: 228.341 with 0 more steps required

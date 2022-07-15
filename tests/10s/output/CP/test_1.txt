@@ -1,0 +1,72 @@
+Testing file: tests/test_1.json
+Testing solution 6
+No solution found with steps: 6
+Testing solution 7
+Solution found with steps: 7
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+Tried aggregator 3 times.
+MIP Presolve eliminated 2101 rows and 3207 columns.
+MIP Presolve modified 11 coefficients.
+Aggregator did 2576 substitutions.
+Reduced MIP has 2117 rows, 1902 columns, and 5943 nonzeros.
+Reduced MIP has 860 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (24.50 ticks)
+Found incumbent of value 12.000000 after 0.02 sec. (28.74 ticks)
+Probing fixed 454 vars, tightened 1046 bounds.
+Probing changed sense of 10 constraints.
+Probing time = 0.01 sec. (10.15 ticks)
+Cover probing fixed 0 vars, tightened 37 bounds.
+Tried aggregator 3 times.
+MIP Presolve eliminated 1745 rows and 1389 columns.
+MIP Presolve added 12 rows and 0 columns.
+MIP Presolve modified 54 coefficients.
+Aggregator did 259 substitutions.
+Reduced MIP has 125 rows, 123 columns, and 381 nonzeros.
+Reduced MIP has 123 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (4.10 ticks)
+Probing fixed 1 vars, tightened 0 bounds.
+Probing time = 0.00 sec. (0.38 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 23 rows and 26 columns.
+Reduced MIP has 102 rows, 97 columns, and 317 nonzeros.
+Reduced MIP has 97 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.30 ticks)
+Probing time = 0.00 sec. (0.23 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 102 rows, 97 columns, and 317 nonzeros.
+Reduced MIP has 97 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.24 ticks)
+Probing time = 0.00 sec. (0.24 ticks)
+Clique table members: 264.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 16 threads.
+Root relaxation solution time = 0.00 sec. (0.26 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                           11.0000        7.0000            36.36%
+      0     0        7.0000    26       11.0000        7.0000       26   36.36%
+*     0+    0                            9.0000        7.0000            22.22%
+      0     0        7.0833    53        9.0000      Cuts: 25       51   21.30%
+*     0+    0                            8.0000        7.0833            11.46%
+      0     0        cutoff              8.0000        7.0833       51   11.46%
+Elapsed time = 0.26 sec. (53.09 ticks, tree = 0.01 MB, solutions = 5)
+
+Cover cuts applied:  1
+Implied bound cuts applied:  5
+Zero-half cuts applied:  11
+Gomory fractional cuts applied:  3
+
+Root node processing (before b&c):
+  Real time             =    0.26 sec. (53.50 ticks)
+Parallel b&c, 16 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.26 sec. (53.50 ticks)
+
+Solution computed in: 307.619 with 1 more steps required

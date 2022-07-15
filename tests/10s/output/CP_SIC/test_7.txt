@@ -1,0 +1,93 @@
+Testing file: tests/test_7.json
+TDSP2 (10, 0, 0) (2, 0, 0)
+Found path from (10, 0, 0) to (2, 0, 0)
+(10, 0, 0) (2, 0, 0) 
+(10, 0, 0) (10, 0, 0) (5, 0, 0) (9, 0, 0) (6, 0, 0) (10, 0, 0) (1, 0, 0) (2, 0, 0) (1, 0, 0) (0, 0, 0) 
+TDSP2 (2, 0, 0) (1, 0, 0)
+Found path from (2, 0, 0) to (1, 0, 0)
+(2, 0, 0) (8, 0, 0) (1, 0, 0) 
+(8, 0, 0) (0, 0, 0) (5, 0, 0) (9, 0, 0) (8, 0, 0) (7, 0, 0) (2, 0, 0) (2, 0, 0) (7, 0, 0) (2, 0, 0) 
+TDSP2 (2, 0, 0) (7, 0, 0)
+Found path from (2, 0, 0) to (7, 0, 0)
+(2, 0, 0) (7, 0, 0) 
+(8, 0, 0) (0, 0, 0) (5, 0, 0) (9, 0, 0) (8, 0, 0) (7, 0, 0) (2, 0, 0) (2, 0, 0) (7, 0, 0) (2, 0, 0) 
+TDSP2 (7, 0, 0) (3, 0, 0)
+Found path from (7, 0, 0) to (3, 0, 0)
+(7, 0, 0) (9, 0, 0) (4, 0, 0) (3, 0, 0) 
+(8, 0, 0) (10, 0, 0) (4, 0, 0) (9, 0, 0) (6, 0, 0) (7, 0, 0) (0, 0, 0) (9, 0, 0) (7, 0, 0) (6, 0, 0) 
+Testing solution 5
+Solution found with steps: 5
+ --------------------------------------------------
+Solution status: Optimal
+
+Solution found:
+ Objective value = 7
+
+--------------------------------------------------
+Step 0
+0 1 0 0 0 0 0 0 0 9 
+Step 1
+0 0 0 0 0 0 6 0 0 9 
+Step 2
+0 1 0 0 0 0 0 0 8 0 
+Step 3
+0 0 0 3 0 0 0 0 0 9 
+Step 4
+0 0 2 0 0 0 0 0 0 0 
+--------------------------------------------------
+Step 0 0 5
+0 2 0 0 
+- - 0 -
+- 0 0 0 0 1 
+Step 1 0 5
+0 0 0 0 
+- - 0 -
+- 0 2 0 0 1 
+Step 2 0 5
+0 1 0 0 
+- - 0 -
+- 0 0 0 2 0 
+Step 3 0 5
+0 0 0 2 
+- - 0 -
+- 0 0 0 0 1 
+Step 4 0 5
+1 0 2 0 
+- - 0 -
+- 0 0 0 0 0 
+--------------------------------------------------
+agent 0 : 
+10 10 2 10 1 
+agent 1 : 
+2 7 9 4 3 
+--------------------------------------------------
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+Tried aggregator 3 times.
+MIP Presolve eliminated 2407 rows and 3267 columns.
+MIP Presolve modified 2 coefficients.
+Aggregator did 927 substitutions.
+Reduced MIP has 212 rows, 277 columns, and 709 nonzeros.
+Reduced MIP has 154 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (9.85 ticks)
+Found incumbent of value 8.000000 after 0.01 sec. (10.84 ticks)
+Probing fixed 52 vars, tightened 134 bounds.
+Probing changed sense of 13 constraints.
+Probing time = 0.00 sec. (0.86 ticks)
+Cover probing fixed 0 vars, tightened 2 bounds.
+Tried aggregator 2 times.
+MIP Presolve eliminated 202 rows and 266 columns.
+MIP Presolve modified 9 coefficients.
+Aggregator did 10 substitutions.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (0.24 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.01 sec. (12.35 ticks)
+Parallel b&c, 16 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.01 sec. (12.35 ticks)
+
+Solution computed in: 41.0546 with 0 more steps required

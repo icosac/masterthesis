@@ -1,0 +1,128 @@
+Entering CBS_TDSP_MKS
+	Entering MAG12_neigh
+	 Solved 12/25 with avg time 207.87905000000003ms
+	Entering MAG1_neigh
+	 Solved 13/20 with avg time 117.59173846153845ms
+	Entering MAG2_neigh
+	 Solved 10/20 with avg time 72.787164ms
+	Entering MAG2_1_neigh
+	 Solved 9/20 with avg time 27.533821111111113ms
+	Entering MAG2_2_neigh
+	 Solved 13/20 with avg time 7.5072643076923065ms
+	Entering MAG2_1_1_neigh
+	 Solved 7/20 with avg time 8.139157142857142ms
+	Entering MAG2_1_2_neigh
+	 Solved 5/15 with avg time 28.866717799999996ms
+	Entering MAG2_2_1_neigh
+	 Solved 4/12 with avg time 1.73699775ms
+	Entering MAG2_2_2_neigh
+	 Solved 5/12 with avg time 181.1316738ms
+Entering CBS_TDSP_SIC
+	Entering MAG12_neigh
+	 Solved 12/25 with avg time 208.2891333333333ms
+	Entering MAG1_neigh
+	 Solved 12/20 with avg time 124.19396666666667ms
+	Entering MAG2_neigh
+	 Solved 10/20 with avg time 73.07619700000001ms
+	Entering MAG2_1_neigh
+	 Solved 9/20 with avg time 27.43966ms
+	Entering MAG2_2_neigh
+	 Solved 14/20 with avg time 32.93924621428572ms
+	Entering MAG2_1_1_neigh
+	 Solved 7/20 with avg time 7.32675ms
+	Entering MAG2_1_2_neigh
+	 Solved 5/15 with avg time 29.167408200000004ms
+	Entering MAG2_2_1_neigh
+	 Solved 4/12 with avg time 1.88212175ms
+	Entering MAG2_2_2_neigh
+	 Solved 4/12 with avg time 0.379269ms
+Entering CBS_ST_MKS
+	Entering MAG12_neigh
+	 Solved 0/25 with avg time 0.0ms
+	Entering MAG1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_neigh
+	 Solved 1/20 with avg time 0.553209ms
+	Entering MAG2_2_neigh
+	 Solved 1/20 with avg time 4.57752ms
+	Entering MAG2_1_1_neigh
+	 Solved 2/20 with avg time 9.2140595ms
+	Entering MAG2_1_2_neigh
+	 Solved 0/15 with avg time 0.0ms
+	Entering MAG2_2_1_neigh
+	 Solved 1/12 with avg time 0.804129ms
+	Entering MAG2_2_2_neigh
+	 Solved 2/12 with avg time 2.417558ms
+Entering CBS_ST_SIC
+	Entering MAG12_neigh
+	 Solved 0/25 with avg time 0.0ms
+	Entering MAG1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_neigh
+	 Solved 1/20 with avg time 0.963248ms
+	Entering MAG2_2_neigh
+	 Solved 2/20 with avg time 43.000895ms
+	Entering MAG2_1_1_neigh
+	 Solved 2/20 with avg time 9.047389500000001ms
+	Entering MAG2_1_2_neigh
+	 Solved 0/15 with avg time 0.0ms
+	Entering MAG2_2_1_neigh
+	 Solved 1/12 with avg time 303.657ms
+	Entering MAG2_2_2_neigh
+	 Solved 2/12 with avg time 3.2678605ms
+Entering CP_MKS
+	Entering MAG12_neigh
+	 Solved 0/25 with avg time 0.0ms
+	Entering MAG1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_2_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_2_neigh
+	 Solved 0/15 with avg time 0.0ms
+	Entering MAG2_2_1_neigh
+	 Solved 0/12 with avg time 0.0ms
+	Entering MAG2_2_2_neigh
+	 Solved 0/12 with avg time 0.0ms
+Entering CP_SIC
+	Entering MAG12_neigh
+	 Solved 0/25 with avg time 0.0ms
+	Entering MAG1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_2_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_1_neigh
+	 Solved 0/20 with avg time 0.0ms
+	Entering MAG2_1_2_neigh
+	 Solved 0/15 with avg time 0.0ms
+	Entering MAG2_2_1_neigh
+	 Solved 0/12 with avg time 0.0ms
+	Entering MAG2_2_2_neigh
+	 Solved 0/12 with avg time 0.0ms
+Solved 170/984
+Entering CBS_TDSP_SIC
+	 Solved 184/300 with avg time 13.323187983695652ms
+Entering CBS_ST_MKS
+	 Solved 30/300 with avg time 24.259903733333335ms
+Entering CP_MKS
+	 Solved 21/300 with avg time 362.0908428571429ms
+Entering CP_SIC
+	 Solved 17/300 with avg time 273.5155352941176ms
+Entering CBS_TDSP_MKS
+	 Solved 187/300 with avg time 15.855925122994652ms
+Entering CBS_ST_SIC
+	 Solved 27/300 with avg time 37.45192948148148ms
+Solved 466/1800

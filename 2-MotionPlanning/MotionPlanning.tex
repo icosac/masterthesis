@@ -1,16 +1,17 @@
 \chapter{Motion Planning}
 \label{ch:motionPlanning}
-In this thesis, we focuses on the aspect of motion planning leaving the equally
-important problem of mission planning as completed before starting the motion
-planning task. While the first focuses on the best way of meeting the goals for
-each robots in the environment~\cite{missionplanning}, the second one focuses
-on the best path to follow starting from a position, executing the intermediate
-objectives and reaching the final destination~\cite{motionplanning}. The reason
-why mission planning is not considered is due to the fact that usually
-warehouses use specialized software to handle their internal structures, and
-such software is usually responsible for the generation of the set of goals. 
-The aspect of motion planning is particularly important in a populated 
-environment because it needs to guarantee people safety. 
+In this thesis, we focuses on the aspect of motion planning considering the
+equally important problem of mission planning as completed before starting the
+motion planning task. While the former focuses on the best path to follow
+starting from a position, executing the intermediate objectives and reaching
+the final destination~\cite{motionplanning}, the latter focuses on the best way
+of organizing the goals for each robots in the
+environment~\cite{missionplanning}. The reason why mission planning is not
+considered is due to the fact that usually warehouses use specialized software
+to handle their internal structures, and such software is usually responsible
+for the generation of an ordered set of goals. The aspect of motion planning is
+particularly important in a populated environment because it needs to guarantee
+people safety. 
 %
 %
 %
@@ -30,9 +31,9 @@ algorithm for PP that has been proven to find paths for all the robots in the
 system and to terminate twice as fast was also provided~\cite{michal2015}.
 Another important factor for human-aware motion planning is the smoothing of
 the trajectory which is done by interpolating the points with well-behaved
-curves:~\cite{frego2020} proposed a novel solution using dynamic programming
-for the multi-point Markov-Dubins problem which was later refined using
-parallel programming on GPUs~\cite{saccon2021}. \newline
+curves: we proposed a novel solution using dynamic programming for the 
+multi-point Markov-Dubins problem~\cite{frego2020} in 2020 and we later refined
+it using parallel programming on GPUs~\cite{saccon2021}. \newline
 The integration of human motion in the planning has been studied for
 single-agent motion in various works that can then be adapted to a multi-agent
 scenario. A first reactive model based on velocity obstacles, i.e., a set of

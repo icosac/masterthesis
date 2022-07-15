@@ -1,0 +1,151 @@
+Testing file: tests/test_20.json
+TDSP2 (14, 0, 0) (3, 0, 0)
+Found path from (14, 0, 0) to (3, 0, 0)
+(14, 0, 0) (3, 0, 0) 
+(14, 0, 0) (14, 0, 0) (14, 0, 0) (5, 0, 0) (14, 0, 0) (3, 0, 0) (14, 0, 0) (14, 0, 0) (2, 0, 0) (3, 0, 0) (2, 0, 0) (2, 0, 0) (1, 0, 0) (0, 0, 0) (2, 0, 0) (5, 0, 0) (14, 0, 0) (14, 0, 0) (14, 0, 0) (14, 0, 0) 
+TDSP2 (3, 0, 0) (16, 0, 0)
+Found path from (3, 0, 0) to (16, 0, 0)
+(3, 0, 0) (5, 0, 0) (16, 0, 0) 
+(6, 0, 0) (3, 0, 0) (0, 0, 0) (5, 0, 0) (3, 0, 0) (3, 0, 0) (5, 0, 0) (2, 0, 0) (3, 0, 0) (3, 0, 0) (3, 0, 0) (3, 0, 0) (6, 0, 0) (2, 0, 0) (2, 0, 0) (5, 0, 0) (3, 0, 0) (3, 0, 0) (2, 0, 0) (3, 0, 0) 
+TDSP2 (16, 0, 0) (1, 0, 0)
+Found path from (16, 0, 0) to (1, 0, 0)
+(16, 0, 0) (1, 0, 0) 
+(16, 0, 0) (16, 0, 0) (16, 0, 0) (5, 0, 0) (16, 0, 0) (16, 0, 0) (1, 0, 0) (2, 0, 0) (16, 0, 0) (16, 0, 0) (2, 0, 0) (2, 0, 0) (1, 0, 0) (16, 0, 0) (2, 0, 0) (0, 0, 0) (1, 0, 0) (1, 0, 0) (1, 0, 0) (2, 0, 0) 
+TDSP2 (12, 0, 0) (13, 0, 0)
+Found path from (12, 0, 0) to (13, 0, 0)
+(12, 0, 0) (13, 0, 0) 
+(8, 0, 0) (8, 0, 0) (8, 0, 0) (9, 0, 0) (8, 0, 0) (10, 0, 0) (8, 0, 0) (12, 0, 0) (12, 0, 0) (12, 0, 0) (12, 0, 0) (0, 0, 0) (12, 0, 0) (8, 0, 0) (12, 0, 0) (12, 0, 0) (12, 0, 0) (12, 0, 0) (12, 0, 0) (12, 0, 0) 
+TDSP2 (13, 0, 0) (9, 0, 0)
+Found path from (13, 0, 0) to (9, 0, 0)
+(13, 0, 0) (3, 0, 0) (9, 0, 0) 
+(8, 0, 0) (3, 0, 0) (13, 0, 0) (18, 0, 0) (3, 0, 0) (3, 0, 0) (13, 0, 0) (13, 0, 0) (3, 0, 0) (3, 0, 0) (3, 0, 0) (3, 0, 0) (0, 0, 0) (8, 0, 0) (13, 0, 0) (7, 0, 0) (3, 0, 0) (13, 0, 0) (8, 0, 0) (13, 0, 0) 
+TDSP2 (9, 0, 0) (2, 0, 0)
+Found path from (9, 0, 0) to (2, 0, 0)
+(9, 0, 0) (1, 0, 0) (2, 0, 0) 
+(9, 0, 0) (1, 0, 0) (9, 0, 0) (9, 0, 0) (9, 0, 0) (3, 0, 0) (9, 0, 0) (9, 0, 0) (0, 0, 0) (3, 0, 0) (9, 0, 0) (3, 0, 0) (9, 0, 0) (9, 0, 0) (9, 0, 0) (4, 0, 0) (9, 0, 0) (9, 0, 0) (9, 0, 0) (9, 0, 0) 
+Testing solution 6
+Solution found with steps: 6
+ --------------------------------------------------
+Solution status: Optimal
+
+Solution found:
+ Objective value = 4
+
+--------------------------------------------------
+Step 0
+0 0 0 0 0 0 0 0 0 0 0 11 0 13 0 0 0 0 0 0 
+Step 1
+0 0 2 0 0 0 0 0 8 0 0 0 0 0 0 0 0 0 0 0 
+Step 2
+0 0 0 0 0 0 0 0 8 0 0 0 0 0 0 0 16 0 0 0 
+Step 3
+0 0 0 0 0 0 0 0 0 0 0 0 12 0 0 15 0 0 0 0 
+Step 4
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 15 0 0 0 0 
+Step 5
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+--------------------------------------------------
+Step 0 0 6
+0 0 0 0 
+- - 0 -
+- 0 0 0 0 0 0 2 0 1 0 0 0 0 0 0 
+Step 1 0 6
+0 0 1 0 
+- - 0 -
+- 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 
+Step 2 0 6
+0 0 0 0 
+- - 0 -
+- 0 0 0 2 0 0 0 0 0 0 0 1 0 0 0 
+Step 3 0 6
+0 0 0 0 
+- - 0 -
+- 0 0 0 0 0 0 0 2 0 0 1 0 0 0 0 
+Step 4 0 6
+0 0 0 0 
+- - 0 -
+- 0 0 0 0 0 0 0 0 0 2 1 0 0 0 0 
+Step 5 0 6
+1 2 0 0 
+- - 0 -
+- 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+--------------------------------------------------
+agent 0 : 
+14 3 17 16 16 1 
+agent 1 : 
+12 9 9 13 15 2 
+--------------------------------------------------
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+Tried aggregator 2 times.
+MIP Presolve eliminated 6984 rows and 10400 columns.
+MIP Presolve modified 19 coefficients.
+Aggregator did 8974 substitutions.
+Reduced MIP has 7371 rows, 6703 columns, and 21482 nonzeros.
+Reduced MIP has 2950 binaries, 0 generals, 0 SOSs, and 2 indicators.
+Presolve time = 0.05 sec. (160.08 ticks)
+Probing fixed 19 vars, tightened 1004 bounds.
+Probing changed sense of 8 constraints.
+Probing time = 0.13 sec. (64.05 ticks)
+Tried aggregator 3 times.
+MIP Presolve eliminated 2506 rows and 1675 columns.
+MIP Presolve added 182 rows and 0 columns.
+MIP Presolve modified 757 coefficients.
+Aggregator did 3345 substitutions.
+Reduced MIP has 1701 rows, 1433 columns, and 6796 nonzeros.
+Reduced MIP has 1433 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (28.66 ticks)
+Probing fixed 46 vars, tightened 0 bounds.
+Probing changed sense of 2 constraints.
+Probing time = 0.02 sec. (14.96 ticks)
+Cover probing fixed 0 vars, tightened 5 bounds.
+Tried aggregator 2 times.
+MIP Presolve eliminated 563 rows and 391 columns.
+MIP Presolve added 61 rows and 0 columns.
+MIP Presolve modified 32 coefficients.
+Aggregator did 62 substitutions.
+Reduced MIP has 1137 rows, 980 columns, and 4703 nonzeros.
+Reduced MIP has 980 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (8.10 ticks)
+Probing time = 0.00 sec. (2.69 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 1137 rows, 980 columns, and 4703 nonzeros.
+Reduced MIP has 980 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (3.94 ticks)
+Probing time = 0.00 sec. (2.70 ticks)
+Clique table members: 2542.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 16 threads.
+Root relaxation solution time = 0.02 sec. (4.24 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            4.0000        0.0000           100.00%
+      0     0        0.2500   111        4.0000        0.2500      133   93.75%
+      0     0        1.5417   197        4.0000      Cuts: 87      204   61.46%
+      0     0        2.0000    87        4.0000      Cuts: 37      213   50.00%
+      0     0        2.0000   146        4.0000      Cuts: 10      257   50.00%
+      0     0        2.0000    97        4.0000       Cuts: 3      270   50.00%
+      0     0        2.0000   127        4.0000      Cuts: 21      304   50.00%
+Detecting symmetries...
+      0     0        cutoff              4.0000        4.0000      304    0.00%
+Elapsed time = 0.41 sec. (402.58 ticks, tree = 0.01 MB, solutions = 1)
+
+Clique cuts applied:  3
+Implied bound cuts applied:  16
+Zero-half cuts applied:  17
+Lift and project cuts applied:  1
+Gomory fractional cuts applied:  3
+
+Root node processing (before b&c):
+  Real time             =    0.42 sec. (403.31 ticks)
+Parallel b&c, 16 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.42 sec. (403.31 ticks)
+
+Solution computed in: 497.45 with 0 more steps required

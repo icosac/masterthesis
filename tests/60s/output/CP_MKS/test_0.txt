@@ -1,0 +1,202 @@
+Testing file: tests/test_0.json
+TDSP2 (8, 0, 0) (2, 0, 0)
+Found path from (8, 0, 0) to (2, 0, 0)
+(8, 0, 0) (9, 0, 0) (1, 0, 0) (7, 0, 0) (10, 0, 0) (2, 0, 0) 
+(9, 0, 0) (10, 0, 0) (9, 0, 0) (1, 0, 0) (4, 0, 0) (4, 0, 0) (1, 0, 0) (0, 0, 0) (8, 0, 0) (7, 0, 0) 
+TDSP2 (2, 0, 0) (1, 0, 0)
+Found path from (2, 0, 0) to (1, 0, 0)
+(2, 0, 0) (7, 0, 0) (8, 0, 0) (9, 0, 0) (1, 0, 0) 
+(9, 0, 0) (0, 0, 0) (6, 0, 0) (6, 0, 0) (4, 0, 0) (7, 0, 0) (2, 0, 0) (7, 0, 0) (8, 0, 0) (2, 0, 0) 
+TDSP2 (2, 0, 0) (4, 0, 0)
+Found path from (2, 0, 0) to (4, 0, 0)
+(2, 0, 0) (7, 0, 0) (6, 0, 0) (4, 0, 0) 
+(9, 0, 0) (0, 0, 0) (6, 0, 0) (6, 0, 0) (4, 0, 0) (7, 0, 0) (2, 0, 0) (7, 0, 0) (8, 0, 0) (2, 0, 0) 
+TDSP2 (4, 0, 0) (3, 0, 0)
+Found path from (4, 0, 0) to (3, 0, 0)
+(4, 0, 0) (5, 0, 0) (3, 0, 0) 
+(9, 0, 0) (10, 0, 0) (5, 0, 0) (0, 0, 0) (4, 0, 0) (4, 0, 0) (6, 0, 0) (3, 0, 0) (8, 0, 0) (7, 0, 0) 
+Testing solution 10
+Solution found with steps: 10
+ --------------------------------------------------
+Solution status: Optimal
+
+Solution found:
+ Objective value = 5
+
+--------------------------------------------------
+Step 0
+0 1 0 0 0 0 0 7 0 0 
+Step 1
+0 0 0 0 0 0 6 0 8 0 
+Step 2
+0 0 0 0 0 5 0 0 0 0 
+Step 3
+0 0 0 0 0 5 6 0 0 0 
+Step 4
+0 0 0 3 0 0 0 0 0 9 
+Step 5
+0 1 0 0 0 5 0 0 0 0 
+Step 6
+0 0 0 0 0 5 6 0 0 0 
+Step 7
+0 0 0 0 0 5 0 7 0 0 
+Step 8
+0 0 2 0 0 0 0 0 8 0 
+Step 9
+0 0 2 0 0 0 0 0 0 0 
+--------------------------------------------------
+Step 0 0 10
+0 2 0 0 
+- - 0 -
+- 0 0 1 0 0 
+Step 1 0 10
+0 0 0 0 
+- - 0 -
+- 0 2 0 1 0 
+Step 2 0 10
+1 0 0 0 
+- - 0 -
+- 2 0 0 0 0 
+Step 3 0 10
+0 0 0 0 
+- - 0 -
+- 2 1 0 0 0 
+Step 4 0 10
+0 0 0 2 
+- - 0 -
+- 0 0 0 0 1 
+Step 5 0 10
+0 1 0 0 
+- - 0 -
+- 2 0 0 0 0 
+Step 6 0 10
+0 0 0 0 
+- - 0 -
+- 2 1 0 0 0 
+Step 7 0 10
+0 0 0 0 
+- - 0 -
+- 2 0 1 0 0 
+Step 8 0 10
+0 0 2 0 
+- - 0 -
+- 0 0 0 1 0 
+Step 9 0 10
+1 0 2 0 
+- - 0 -
+- 0 0 0 0 0 
+--------------------------------------------------
+agent 0 : 
+8 9 1 7 10 2 7 8 9 1 
+agent 1 : 
+2 7 6 6 4 6 6 6 3 3 
+--------------------------------------------------
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+Tried aggregator 3 times.
+MIP Presolve eliminated 2555 rows and 4169 columns.
+MIP Presolve modified 9 coefficients.
+Aggregator did 4351 substitutions.
+Reduced MIP has 3890 rows, 3456 columns, and 10810 nonzeros.
+Reduced MIP has 1566 binaries, 0 generals, 0 SOSs, and 2 indicators.
+Presolve time = 0.02 sec. (47.55 ticks)
+Probing fixed 877 vars, tightened 1814 bounds.
+Probing changed sense of 20 constraints.
+Probing time = 0.04 sec. (13.48 ticks)
+Cover probing fixed 0 vars, tightened 2 bounds.
+Tried aggregator 4 times.
+MIP Presolve eliminated 2834 rows and 2077 columns.
+MIP Presolve added 37 rows and 0 columns.
+MIP Presolve modified 135 coefficients.
+Aggregator did 677 substitutions.
+Reduced MIP has 414 rows, 385 columns, and 1221 nonzeros.
+Reduced MIP has 385 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (11.43 ticks)
+Probing fixed 32 vars, tightened 0 bounds.
+Probing changed sense of 2 constraints.
+Probing time = 0.00 sec. (2.47 ticks)
+Cover probing fixed 0 vars, tightened 4 bounds.
+Tried aggregator 3 times.
+MIP Presolve eliminated 173 rows and 168 columns.
+MIP Presolve modified 7 coefficients.
+Aggregator did 5 substitutions.
+Reduced MIP has 236 rows, 212 columns, and 736 nonzeros.
+Reduced MIP has 212 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (1.52 ticks)
+Probing time = 0.00 sec. (0.45 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve eliminated 1 rows and 1 columns.
+Reduced MIP has 235 rows, 211 columns, and 733 nonzeros.
+Reduced MIP has 211 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.79 ticks)
+Probing time = 0.00 sec. (0.55 ticks)
+Clique table members: 537.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 16 threads.
+Root relaxation solution time = 0.00 sec. (0.59 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            5.0000        2.0000            60.00%
+      0     0        2.0000    68        5.0000        2.0000       27   60.00%
+      0     0        2.0000    58        5.0000      Cuts: 33       54   35.00%
+      0     0        2.0000    46        5.0000      Cuts: 39       67   35.00%
+      0     0        2.2500   116        5.0000      Cuts: 21       92   35.00%
+      0     0        2.3333   106        5.0000      Cuts: 51      107   35.00%
+      0     0        2.6316   138        5.0000      Cuts: 42      136   35.00%
+Detecting symmetries...
+      0     0        2.6813   127        5.0000      Cuts: 20      152   35.00%
+      0     0        2.7500   129        5.0000      Cuts: 30      174   35.00%
+      0     0        2.8264   147        5.0000      Cuts: 49      186   35.00%
+      0     0        2.9615   140        5.0000      Cuts: 31      207   35.00%
+      0     0        2.9966   162        5.0000      Cuts: 37      220   35.00%
+      0     0        3.0962   141        5.0000      Cuts: 32      252   35.00%
+      0     0        3.1139   149        5.0000      Cuts: 19      264   35.00%
+      0     0        3.2222   125        5.0000      Cuts: 29      284   35.00%
+      0     0        3.2308   129        5.0000      Cuts: 28      297   35.00%
+      0     0        3.2857   135        5.0000      Cuts: 28      306   34.29%
+      0     0        3.3077   142        5.0000      Cuts: 16      313   33.85%
+      0     0        3.3182   141        5.0000      Cuts: 36      334   33.64%
+      0     0        3.3258   144        5.0000      Cuts: 23      361   33.48%
+      0     0        3.3659   122        5.0000      Cuts: 28      376   32.68%
+      0     0        3.3947   143        5.0000      Cuts: 33      393   32.11%
+      0     0        3.3965   161        5.0000      Cuts: 30      409   32.07%
+      0     0        3.4444   139        5.0000      Cuts: 28      429   31.11%
+      0     0        3.4937   149        5.0000      Cuts: 36      474   30.13%
+      0     0        3.5139   144        5.0000      Cuts: 27      490   29.72%
+      0     0        3.5217   127        5.0000      Cuts: 25      512   29.57%
+      0     0        3.5223   157        5.0000      Cuts: 23      551   29.55%
+      0     0        3.5500   127        5.0000      Cuts: 20      569   29.00%
+      0     0        3.5595   142        5.0000      Cuts: 22      590   28.81%
+      0     0        3.5667   151        5.0000      Cuts: 17      614   28.67%
+      0     0        3.5764   143        5.0000      Cuts: 23      646   28.47%
+      0     0        3.5870   137        5.0000      Cuts: 12      664   28.26%
+      0     0        3.5895   142        5.0000      Cuts: 31      682   28.21%
+      0     0        3.5935   145        5.0000      Cuts: 19      717   28.13%
+      0     0        3.6000   102        5.0000      Cuts: 61      731   28.00%
+      0     0        3.6027   154        5.0000      Cuts: 21      755   27.95%
+      0     0        3.6091   156        5.0000      Cuts: 23      782   27.82%
+      0     0        3.6233   140        5.0000      Cuts: 20      803   27.53%
+      0     0        3.6255   156        5.0000      Cuts: 23      820   27.49%
+      0     0        3.6484   147        5.0000      Cuts: 22      845   27.03%
+      0     0        3.6606   156        5.0000      Cuts: 26      868   26.79%
+      0     0        cutoff              5.0000        5.0000      891    0.00%
+Elapsed time = 0.26 sec. (211.71 ticks, tree = 0.01 MB, solutions = 1)
+
+Cover cuts applied:  1
+Implied bound cuts applied:  6
+Mixed integer rounding cuts applied:  2
+Zero-half cuts applied:  46
+
+Root node processing (before b&c):
+  Real time             =    0.26 sec. (212.02 ticks)
+Parallel b&c, 16 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.26 sec. (212.02 ticks)
+
+Solution computed in: 307.482 with 0 more steps required

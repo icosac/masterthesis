@@ -3,22 +3,22 @@
 In this chapter, the main algorithms used to solve the \acrf{MAPF} are
 described. We first give a formal definition of the problem and how it
 differs from the classical \acrl{mapf} problem. Then a description of the
-implementation in constraint programming of an algorithm is presented, showing
-promising results obtained by modelling the problem with constraints. \newline
+implementation in constraint programming is presented, showing promising
+results obtained by modelling the problem with constraints. \newline
 Then a state-of-the-art algorithm using imperative programming language is
-presented showing the revisions that have to be made in order to adapt it to
-the industrial scenario we were faced with.
+presented showing the revisions that had to be made in order to adapt it to the
+industrial scenario we were faced with.
 %
 %
 %
 \section{Problem definition}
-The problem faced is the following:
+The problem is the following:
 \begin{definition}
   Let $G=(V,E)$ an undirected graph with weighted edges. Consider $k$ agents
   having to move from a set of $k$ initial position $S$, one for each agent, to
   a set of $k$ final positions, passing through an agent-variable number $j_i$
   of goal positions. The problem consists in finding the best joint plan $\Pi$
-  that minimizes an objective function so that no conflict arise from the
+  that minimizes an objective function so that no conflict arises from the
   execution of such plan. \newline
   Moreover, we shall assume that the goal positions are known a priori and no
   new goal position is later added to the list.
@@ -32,15 +32,16 @@ graph are weighted: indeed, we need to consider the cases in which some links
 from a point to another are longer than others. \newline
 The following symbols are used in the rest of the thesis:
 \begin{itemize}
-  \item $\mathcal{A}$ or \texttt{agents}, the set of all the agents;
+  \item $\mathcal{A}$ or \textit{agents}, the set of all the agents;
   \item $S=initPos$ the list of initial positions of the agents;
   \item $E=endPos$ the list of final positions of the agents;
   \item $\pi_i$ a valid plan for an agent $i$;
   \item $\abs{\pi_i}$ the length of the plan for agent $i$, i.e., the number
     of nodes traversed by agent $i$ during the execution of its plan;
-  \item $t_f= \texttt{M}= \max\limits{\pi_i\Pi}\abs{\pi_i}$ the final timestamp
-    of the execution which corresponds to the longest path between all agents;
-  \item $t_i$ the initial step that can be either 0 or 1 depending on the
+  \item $t_f= \texttt{M}= \max\limits_{\pi_i\in\Pi}\abs{\pi_i}$ the final
+    timestamp of the execution which corresponds to the longest path between 
+    all agents;
+  \item $t_i$ the initial step that can either be 0 or 1 depending on the
     programming language starting index;
   \item $\mathcal{S}=\texttt{steps}=\{t_i...t_f\}$ the set of the steps; 
   \item $\mathcal{N}=\texttt{nodes}$ a set containing the nodes of the graph;

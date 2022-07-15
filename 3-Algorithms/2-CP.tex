@@ -6,8 +6,8 @@ using different solvers for the constraints:
   \item \acrf{CSP}: a set of logical and mathematical statements that must
     satisfy a number of constraints~\cite{CSP};
   \item \acrf{SAT}: a set of boolean formulas for which the solver tries to
-    find if there are a set o boolean variables such that the formulas are
-    true, i.e., satisfiable~\cite{SATSolver}. 
+    find a set of boolean variables such that the formulas are true, i.e.,
+    satisfiable~\cite{SATSolver}. 
   \item \acrf{MIP}: a set of linear equations that must be solved while
     satisfying a list of constraints~\cite{MAPF_overview};
 \end{itemize}
@@ -16,22 +16,20 @@ The first step was to take the model proposed by Bart\'{a}k et al. in
 of moving the model to another programming language was to exploit the 
 straightforward similarity between the problem and \acrs{MIP} and also to 
 exploit the optimal performance of IBM's solver. \newline
-Picat is a logic programming language that allows the programmer to code a
-series of constraints as generally as possible and then to solve these by means
-of different solvers offered by the framework. Indeed, Picat can solve the
-coded constraints either with \acrs{SAT} solvers, or with \acrs{MIP} and also
-with a \acrs{CSP} solver. This actually allows for an easy and great comparison
-between the possible solvers, but in our study we focus on having a reliable,
-easy-to-implement and especially easy-to-maintain solver. Picat presents an 
-initial steep learning curve, which does not comply with the easy-to-implement
-and easy-to-maintain requirement. \newline
+Bart\'{a}k et al. used Picat, a logic programming language that allows the 
+programmer to code a series of constraints as generally as possible and then to
+solve these by means of different solvers offered by the framework. Indeed,
+Picat can solve the coded constraints either with a \acrs{SAT} solver, or with
+\acrs{MIP} or also with a \acrs{CSP} solver. This actually allows for an easy
+and great comparison between the possible solvers, but in our study we focus
+on having a reliable, easy-to-implement and especially easy-to-maintain solver.
+Picat presents an initial steep learning curve, which does not comply with the
+easy-to-implement and easy-to-maintain requirements. \newline
 Instead, CPLEX has a much nice learning curve (largely but badly documented,
 Ed.) with an easy to pick up idea of how the solver works and a clear
 distinctions of the phases in which the programmer should divide their code.
-This is particularly noticeable if one starts writing the code using \acrs{OPL}
-and the dedicated problem. A CPLEX program structure 
-%TODO add code of general structure
-is usually divided in:
+This is particularly noticeable if one starts writing the code using 
+\acrs{OPL}. A CPLEX program structure is usually divided in:
 \begin{itemize}
   \item Pre-processing: we used this step to ensure that the input problem was
     well-defined;
@@ -69,12 +67,11 @@ The input variables in our cases are the following:
   \item \milc{goal_pos[n_agents][max_goals]}: a list of lists of goal
     positions, one list for each agent. 
 \end{itemize}
-Notice that \milc{n_steps} is not possible to be known a priori, hence the
-value is usually a simple estimation of what the actual solution would be. The
-value is refined during the execution: whenever a model is not solvable, it is
-incremented of one to check whether is possible to solve the scenario with more
-time. The value is incremented until a solution is found. \newline
-%TODO discuss more in deep how n_steps is set at the beginning.
+Notice that it is not possible to know \milc{n_steps} a priori, hence its value
+is usually a simple estimation of what the actual solution would be. The value
+is refined during the execution: whenever a model is not solvable, it is
+incremented by one to check whether it is possible to solve the scenario with
+more time. The value is incremented until a solution is found. \newline
 To solve the \acrs{MAPF} problem we use multiple decision variables. The
 primary one is the \milc{X[n_steps][n_nodes][n_agents]}, which is a boolean
 three dimensional matrix that keeps track of whether an agent $a_i$ is on node
@@ -96,23 +93,24 @@ The objective function that was initially sought was the minimization of the
 sum of the movements of all the agents in the graph, i.e., minimizing the 
 \textit{sum of costs}~\cite{picat1}. To do this in CPLEX one could simply 
 write:
-\begin{minted}{C}
+\begin{minted}[linenos=false]{C}
 minimize sum(a in agents, s in steps) movement[a][s];
 \end{minted}
 which corresponds to just minimizing the sum of all the cells in the movement
-matrix. We will discuss later about the implementation in C++ of the constraint
-model and how it is possible to also minimize for the makespan. 
+matrix. We will discuss later about the implementation in C++ of the model and
+how it is possible to also minimize for the makespan. 
 %
 %
 \subsection{Constraints}
 The constrained defined by Bart\'{a}k et al.~\cite{picat1} are being reused:
 \begin{itemize}
-  \item Each agent $a$ cannot be on more than one node at each time:
+  \item Each agent $a$ cannot be on more than one node at each time step:
     \begin{equation}
       \forall s \in \mathcal{S},~\Sum_{n \in \mathcal{N}} X[s][n][a]=1
       \label{eq:picat1_one_agent_one_node}
     \end{equation}
-  \item Each node $n$ cannot be occupied by more than one agent at each time:
+  \item Each node $n$ cannot be occupied by more than one agent at each time
+    step:
     \begin{equation}
       \forall s \in \mathcal{S},~\Sum_{a \in \mathcal{A}} X[s][n][a]\leq 1
       \label{eq:picat1_one_node_one_agent}
@@ -141,10 +139,11 @@ directly modified. Two constraints were then introduced:
 \subsubsection{Swap Conflict}
 Although the swap conflict was not taken into consideration due to the
 increased computational cost as stated in~\cite{picat1}, in this work, it 
-is important to avoid this type of conflict\footnote{We would like to let know 
-that also constructive email exchange has been carried out with the original 
-authors of the Picat algorithm, highlighting this aspect and a possible 
-solution}. A first constraint to avoid a swap conflict is the following:
+is important to avoid this type of conflict\footnote{We would like to make
+known that also a constructive email exchange has been carried out with the 
+original authors of the Picat algorithm, highlighting this aspect and a 
+possible solution.}. A first constraint to avoid a swap conflict is the 
+following:
 \begin{equation}
   \begin{split}
   \forall s \in\mathcal{S}/\{t_f\},~\forall a_i \in\mathcal{A},~\forall 
@@ -156,11 +155,12 @@ solution}. A first constraint to avoid a swap conflict is the following:
   \label{eq:cplex_no_swaps_no_edges}
 \end{equation}
 This though increases a lot the time required to find a solution. \newline 
-The best solution seems to follow the work from Bart\'{a}k and \v{S}ancara in
-2019~\cite{picat2}, who propose to use another structure to keep track of the
-edges occupation. For this reason the following three dimensional matrix is
-used: \milc{edges[n_nodes][n_nodes][n_steps]} which keeps track whether at time
-step $s$ the edge from node $n_i$ to node $n_j$ is being used or not. \newline
+The best alternative seems to follow the work from Bart\'{a}k and \v{S}ancara
+in 2019~\cite{picat2}, who propose to use another structure to keep track of
+the edges occupation. For this reason the following three dimensional matrix is
+used: \milc{edges[n_nodes][n_nodes][n_steps]} which keeps track of whether at
+time step $s$ the edge from node $n_i$ to node $n_j$ is being used or not. 
+\newline
 The constrain is then so defined:
 \begin{equation}
   \forall s \in \mathcal{S}/\{t_f\},~\forall n_i \in \mathcal{N},~\Sum_{n_j \in
@@ -177,7 +177,7 @@ simpler constraint with a priori defined decision variables.
 %
 \subsubsection{Tracking Movements}
 Since we need to minimize the objective function, we need to memorize the
-movements that are done in the simulation. This is done using the following 
+movements that are done in the simulation. This is done by using the following 
 constraint:
 \begin{equation}
   \begin{array}{c}
@@ -203,7 +203,8 @@ following constraints were added:
   \label{eq:take_goals}
 \end{equation}
 Which means that if the goal has been taken in a given movement $s$ from a
-agent $a$, then the agent must be in said position in said moment. \newline
+agent $a$, then the agent must be in said position $n$ that time step $s$.
+\newline
 We also need to make sure that an agent takes at most one goal in each
 timestamp and that also each goal is taken at most once:
 \begin{equation}
@@ -217,8 +218,8 @@ timestamp and that also each goal is taken at most once:
   \label{eq:one_goal_per_life}
 \end{equation}
 Finally, constraint from Equation~\ref{eq:cplex_final_pos} must be modified in
-order to account for the fact that the agent cannot reach the final destination
-without having taken the goals:
+order to account for the fact that the agents cannot reach the final
+destination without having taken the goals:
 \begin{equation}
   \forall a\in\mathcal{A} 
   \Sum_{\substack{s\in\mathcal{S}\\g\in\{1,\hdots,\texttt{n\_goals}[a]\}}}
@@ -232,17 +233,59 @@ without having taken the goals:
 solve it and analyze whether it was possible to find a feasible solution or
 not. This is particularly useful to the \acrs{MAPF} problem since it is not
 possible to know a priori which are the correct lengths of the paths to follow.
-The idea is to stat with a lower bound on the number of steps of the solution
+The idea is to start with a lower bound on the number of steps of the solution
 and increase the value each time the solver could not find a solution until one
 could be found. Will discuss later with the C++ implementation of a better way
 to estimate the lower bound. \newline
 The post-processing instead is basically just a way to output information
-regarding the found solution. 
+about the found solution. 
 %
 %
 \subsection{Python and C++ Implementations}
 Since CPLEX offers the possibility to integrate the solver in Python or C++, we
 tried to develop a more portable version of the software so that it could run
 on multiple platforms without requiring the IDE of \OPL. Moreover, having the
-possibility to run the constraint programming code in C++ and in Python would
-allow us to test the performance far more easily. 
+possibility to run the constraint programming code in C++ or in Python would
+allow us to test the performance far more easily. \newline
+The code was first moved to Python resulting in a quite seamless transition
+from CPLEX. Once the \textit{docplex} library was imported, the data structures
+used to input data are basically the same and the creation of the model is 
+straightforward. Also the decision variables have a class that clearly states
+that they are used as decision variables reducing the confusion. In same way,
+declaring constraints for the model using the given functions is easy. Indeed,
+the syntax of the majority of the code stayed almost the same, leading to the
+hope that maybe the solver called from Python was the same called from the IDE
+of \OPL. Unfortunately we were wrong and the performance dropped dramatically.
+\newline
+We then decided to move to C++ to check whether the performance could improve.
+The CPLEX framework for C++ is called \textit{Concert} and it suffices to say
+that moving the code-base to comply with it was not as immediate as it was with
+Python. With Concert we first need to describe a \texttt{IloEnv} environment
+in which the variables will be stored. We can then create the model and the
+CPLEX solver. The types offered by Concert do not have a clear distinction
+between decision variables and input (or data) variables. Moreover, in some
+cases the name of the types is even misleading, e.g., constraints are
+declared with type \texttt{IloRange} that is quite similar to
+\texttt{IloIntRange} which is used to define an interval of integers\footnote{
+After some time and a little bit of research, one understands that constraints
+seem to be extracted as a series of variables and hence the type  
+\texttt{IloRange}}, or, for example there is not a function similar to how 
+\texttt{sum} works in \OPL IDE or of how \texttt{model.sum()} works in Python,
+but instead the sum over a given set of variables must be done by using an
+auxiliary variable declared as \texttt{IloExpr} and then incremented in a loop.
+The last weak point of Concert is the fact that accessing the variables to
+change their values before repeating the solver is not directly possible, at
+least to our knowledge Instead one needs to free both the solver, the model and
+the environment each time a variable needs to be changed to solve the model
+again. That said, moving the code to C++ proved to be a good decision in terms
+of performance. \newline
+Moreover, doing so allows us to use the shortest path algorithm shown in
+Section~\ref{ssec:TDSP} to provide a lower bound in the pre-processing phase of
+the program reducing by a lot the number of needed iterations to reach a
+solution. \newline
+Finally, both the implementations in Python and C++ allow to minimize not only
+the \acrl{SIC} function, but also to decide to minimize the makespan. Yet 
+again, in Python this is done in a straightforward way by using the function
+\texttt{model.max()} to find the maximum length between the paths, while in C++
+one needs to create the function manually. To note though, that as in CPLEX, it
+is not possible to have two objective functions at once.

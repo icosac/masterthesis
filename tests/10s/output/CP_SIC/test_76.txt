@@ -1,0 +1,116 @@
+Testing file: tests/test_76.json
+TDSP2 (16, 0, 0) (7, 0, 0)
+Found path from (16, 0, 0) to (7, 0, 0)
+(16, 0, 0) (7, 0, 0) 
+(2, 0, 0) (16, 0, 0) (16, 0, 0) (16, 0, 0) (3, 0, 0) (10, 0, 0) (16, 0, 0) (4, 0, 0) (7, 0, 0) (16, 0, 0) (3, 0, 0) (7, 0, 0) (7, 0, 0) (16, 0, 0) (1, 0, 0) (0, 0, 0) (16, 0, 0) (4, 0, 0) (16, 0, 0) (16, 0, 0) 
+TDSP2 (7, 0, 0) (1, 0, 0)
+Found path from (7, 0, 0) to (1, 0, 0)
+(7, 0, 0) (2, 0, 0) (1, 0, 0) 
+(2, 0, 0) (7, 0, 0) (9, 0, 0) (7, 0, 0) (9, 0, 0) (10, 0, 0) (0, 0, 0) (4, 0, 0) (7, 0, 0) (7, 0, 0) (3, 0, 0) (7, 0, 0) (7, 0, 0) (4, 0, 0) (13, 0, 0) (9, 0, 0) (10, 0, 0) (4, 0, 0) (13, 0, 0) (4, 0, 0) 
+TDSP2 (11, 0, 0) (8, 0, 0)
+Found path from (11, 0, 0) to (8, 0, 0)
+(11, 0, 0) (9, 0, 0) (8, 0, 0) 
+(2, 0, 0) (11, 0, 0) (9, 0, 0) (16, 0, 0) (9, 0, 0) (19, 0, 0) (16, 0, 0) (9, 0, 0) (11, 0, 0) (12, 0, 0) (0, 0, 0) (11, 0, 0) (12, 0, 0) (9, 0, 0) (1, 0, 0) (11, 0, 0) (12, 0, 0) (11, 0, 0) (11, 0, 0) (9, 0, 0) 
+TDSP2 (8, 0, 0) (2, 0, 0)
+Found path from (8, 0, 0) to (2, 0, 0)
+(8, 0, 0) (18, 0, 0) (2, 0, 0) 
+(5, 0, 0) (18, 0, 0) (10, 0, 0) (6, 0, 0) (8, 0, 0) (8, 0, 0) (5, 0, 0) (0, 0, 0) (18, 0, 0) (8, 0, 0) (5, 0, 0) (18, 0, 0) (5, 0, 0) (6, 0, 0) (6, 0, 0) (5, 0, 0) (10, 0, 0) (8, 0, 0) (1, 0, 0) (4, 0, 0) 
+Testing solution 5
+Solution found with steps: 5
+ --------------------------------------------------
+Solution status: Optimal
+
+Solution found:
+ Objective value = 7
+
+--------------------------------------------------
+Step 0
+0 0 0 0 0 0 0 0 0 0 10 0 0 0 0 15 0 0 0 0 
+Step 1
+0 0 0 0 0 0 6 0 0 0 0 0 0 0 0 0 0 17 0 0 
+Step 2
+0 0 0 0 0 0 0 7 8 0 0 0 0 0 0 0 0 0 0 0 
+Step 3
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 0 0 
+Step 4
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+--------------------------------------------------
+Step 0 0 5
+0 0 0 0 
+- - 0 -
+- 0 0 0 0 0 2 0 0 0 0 1 0 0 0 0 
+Step 1 0 5
+0 0 0 0 
+- - 0 -
+- 0 1 0 0 0 0 0 0 0 0 0 0 2 0 0 
+Step 2 0 5
+0 0 0 0 
+- - 0 -
+- 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 
+Step 3 0 5
+1 0 0 0 
+- - 0 -
+- 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 
+Step 4 0 5
+1 2 0 0 
+- - 0 -
+- 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+--------------------------------------------------
+agent 0 : 
+16 7 9 1 1 
+agent 1 : 
+11 18 8 18 2 
+--------------------------------------------------
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+Tried aggregator 3 times.
+MIP Presolve eliminated 8905 rows and 11863 columns.
+MIP Presolve modified 19 coefficients.
+Aggregator did 4367 substitutions.
+Reduced MIP has 2133 rows, 2365 columns, and 6748 nonzeros.
+Reduced MIP has 1017 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (82.19 ticks)
+Found incumbent of value 8.000000 after 0.04 sec. (88.27 ticks)
+Probing fixed 76 vars, tightened 828 bounds.
+Probing changed sense of 10 constraints.
+Probing time = 0.04 sec. (37.64 ticks)
+Cover probing fixed 0 vars, tightened 57 bounds.
+Tried aggregator 4 times.
+MIP Presolve eliminated 1448 rows and 1566 columns.
+MIP Presolve added 7 rows and 0 columns.
+MIP Presolve modified 25 coefficients.
+Aggregator did 558 substitutions.
+Reduced MIP has 134 rows, 130 columns, and 430 nonzeros.
+Reduced MIP has 130 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (6.43 ticks)
+Probing time = 0.00 sec. (0.42 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 134 rows, 130 columns, and 430 nonzeros.
+Reduced MIP has 130 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.33 ticks)
+Probing time = 0.00 sec. (0.48 ticks)
+Clique table members: 415.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 16 threads.
+Root relaxation solution time = 0.00 sec. (0.30 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            8.0000        4.0000            50.00%
+*     0+    0                            7.0000        4.0000            42.86%
+      0     0        5.0000    43        7.0000        5.0000       16   28.57%
+      0     0        cutoff              7.0000                     16    0.00%
+Elapsed time = 0.11 sec. (144.54 ticks, tree = 0.01 MB, solutions = 2)
+
+Root node processing (before b&c):
+  Real time             =    0.11 sec. (145.24 ticks)
+Parallel b&c, 16 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.11 sec. (145.24 ticks)
+
+Solution computed in: 174.28 with 0 more steps required

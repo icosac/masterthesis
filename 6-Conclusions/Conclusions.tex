@@ -1,2 +1,24 @@
 \chapter{Conclusions}
 \label{ch:conclusions}
+We have carried out a formal comparison of state-of-the-art algorithms. From
+these, we have chosen three algorithms with the optimality criterion in mind,
+and we also wanted to keep the implementation light so that they could be
+easily maintained. We have shown their implementation providing an accurate
+description of how they work. \newline
+Finally, two sets of tests have been devised, one based on random scenarios
+regarding the \acrs{MAPF} problem, and one based on scenarios taken from a real
+warehouse. The results of the tests show that the algorithms as they are need
+to be improved. Indeed, they fail to provide a solution in many cases, with
+\acrs{CP} taking too much time and \acrs{CBS} failing to find a possible
+solution when using spanning trees. As stated, sub-optimal and more efficient
+versions of the proposed algorithms exist, especially for \acrs{CBS}, but they
+imply major revisions of the code in many cases introducing heuristics and
+sub-optimality, which was outside the scope of the project \newline
+The future work will focus on improving this existing algorithms in order to
+handle corner cases that are difficult to solve. Moreover, we would like to
+explore the combination of \acrs{CBS} and \acrs{CP}. Indeed, \acrs{CP} fails to
+find solutions especially for time and memory limitations, but these problems
+could be greatly reduced when the constraints are thought for \acrs{sapf} and
+not for a \acrs{mapf} problem. Solving only a small area of the graph with
+\acrs{CP} for a certain agent given some constraint could speed up the
+\acrs{CBS} process a lot and provide an optimal solution. 

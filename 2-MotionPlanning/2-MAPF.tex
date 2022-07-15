@@ -5,12 +5,12 @@ agents~\cite{MAPF_definitions}:
 \begin{definition}[\acrl{MAPF}]
   Given a graph $G=(V,E)$, a function $S$ that maps the agents to their initial
   positions and a function $E$ that maps the agents to the their final
-  positions, the problem amount to finding a feasible joint plan $\Pi$ such
+  positions, the problem amounts to finding a feasible joint plan $\Pi$ such
   that each agent reaches its destination, while globally minimizing an
   objective function.
 \end{definition}
-A joint plan $\Pi$ is the set of the plan $\pi_i$ that each agent $a_i$ has to
-follow to reach their destination: 
+A joint plan $\Pi$ is the set of the individual plans $\pi_i$ that each agent
+$a_i$ has to follow to reach its destination: 
 \[\Pi=\{\pi_1, \hdots, \pi_k\}\]
 There are different definitions of the problem in terms of how the graph 
 topology is assumed to be, but the classical one
@@ -40,14 +40,14 @@ following~\cite{MAPF_overview}:
   \item \textit{Swap conflict}: when two agents $a_i$ and $a_j$ are moving on 
     the same edge, but in different directions at the same time $t$
     (Figure~\ref{fig:swapConflict}). 
-    \[\pi_i(t) = \pi_j(t+1) \wedge \pi(t+1) = \pi(t) \iff \text{swap 
+    \[\pi_i(t) = \pi_j(t+1) \wedge \pi_i(t+1) = \pi_j(t) \iff \text{swap 
       conflict}\]
 \end{itemize}
 Given the definition of vertex conflict, it follows that in the classical
 definition of \acrs{mapf}, the edge conflict is avoided a priori by imposing
-the absence of vertex conflicts since the initial positions of two agents must 
-be different. For this reason, the terms edge conflict and swap conflict may be
-used to indicate the same conflict in this work. \newline
+the absence of vertex conflicts since since two agents at time $t$ must have
+different positions. For this reason, the terms edge conflict and swap conflict
+may be used to indicate the same conflict in this work. \newline
 Another type of conflict is the \textit{follow conflict}, shown in
 Figure~\ref{fig:followConflict} which happens when an agent wants to occupy a
 position at time $t$ that was occupied by another agent at time $t-1$. This
@@ -118,11 +118,11 @@ functions: the \textit{makespan} and the \textit{sum of costs}.
     \end{tabular}
   }
   
-  \caption{On the left a \acrs{MAPF} problem with thee agents: the first agent
+  \caption{On the left a \acrs{MAPF} problem with three agents: the first agent
   in red wants to go from 3 to 7, the second agent in green wants to go from 2
   to 9 and the last agent in blue wants to go from 1 to 8. On the right a table
-  summarizing the two possible solutions and showing how by using one objective
-  function instead of the other, the solution changes. Notice that the set of
+  summarizing the two possible solutions and showing how the solution changes
+  by using one objective function instead of the other. Notice that the set of
   possible solutions is not exhaustive, although these two are the best ones 
   and hence the ones that would be chosen.}
   \label{fig:mksvssic}
@@ -134,7 +134,7 @@ path in the plan:
   \mks{\Pi}=\max\limits_{\pi_i\in\Pi}\abs{\pi_i}
   \label{eq:mks}
 \end{equation}
-Minimizing the makespan means finding the plan that contains the shortest
+Minimizing the makespan means finding the plan that contains the shortest path
 among the possible longest paths. \newline
 The sum of costs, or \acrf{SIC}, is instead the sum of the costs of all the
 paths inside the plan:
@@ -147,12 +147,12 @@ paths inside the plan:
 \subsection{Solutions}
 The classical \acrl{mapf} problem has been proved to be NP-hard, i.e., it is 
 not possible to find an optimal solution in polynomial
-time~\cite{lavalle}\cite{MAPFNPHARD}\cite{MAPFIntractable}. Notice that the
-problem is NP-hard when finding an optimal solution, i.e., a solution that
-minimize the objective function, may it be the makespan or the sum of
-individual costs. The Kornhauser's algorithm~\cite{kornhauser} solves the
-\acrs{mapf} problem in $O(\abs{V}^3)$, but the solution it returns it may not
-be the optimal one. \newline
+time~\cite{lavalle,MAPFNPHARD,MAPFIntractable}. Notice that the problem is
+NP-hard when finding an optimal solution, i.e., a solution that minimize the
+objective function, may it be the makespan or the sum of individual costs. The
+Kornhauser's algorithm~\cite{kornhauser} solves the \acrs{mapf} problem in
+$O(\abs{V}^3)$, but the solution it returns it may not be the optimal one.
+\newline
 So an algorithm can be optimal and complete, or a combination of the two. We
 say that the algorithm is \textit{optimal} if the solution it returns is the 
 solution that minimizes the objective function, while we say that a solution is
@@ -162,9 +162,10 @@ be \textit{complete} when it guarantees to return a solution.
 %
 \subsubsection{Kornhauser's}
 The Kornhauser's algorithm is complete but not optimal. It extends the famous
-15-puzzle problem which consists in having 16 nodes 4-connected on a graph as
-shown in Figure~\ref{fig:15Puzzle}, where there is only one node free and the 
-agents can move one step at a time to reach their final destination.
+15-puzzle problem which consists in having15 agents moving no a 16 4-connected
+nodes graph as shown in Figure~\ref{fig:15Puzzle}, where there is only one free
+node and the agents can move one step at a time to reach their final
+destination.
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.35\textwidth]{15Puzzle}
@@ -175,8 +176,8 @@ agents can move one step at a time to reach their final destination.
 \end{figure}\newline
 The considered generalization is the following~\cite{kornhauser}: let $G$ be a 
 graph with $n$ vertices with $k<n$ agents on different vertices and let a move
-an agent moving to a free adjacent vertex. The question the algorithm aims to
-answer is whether it is possible or not to find a way to move all the agents
+be an agent shifting to a free adjacent vertex. The question the algorithm aims
+to answer is whether it is possible or not to find a way to move all the agents
 from one arrangement to another. The solution is obtained by decomposing the
 problem in subproblems each one composed by the agents that can reach the same
 set of nodes and the subgraph made of these nodes~\cite{pebble}. \newline 
@@ -205,7 +206,7 @@ the agents will all have changed their position. The algorithm proposes a
 different representation of the state space in which vertexes that represent
 the positions of all agents at the same time are called \textbf{full vertexes}
 and are the ones that happen every $k$ moves, while all the other vertexes are 
-called \textbf{intermediate vertexes}~\cite{ODandID}~\cite{MAPF_overview}. This
+called \textbf{intermediate vertexes}~\cite{ODandIDM,APF_overview}. This
 allows to have a branching factor of 
 $O\left(k\times\frac{\abs{E}}{\abs{V}}\right)$, which is not exponential.
 Moreover, it is important to notice that the heuristic used in \astar may help
@@ -227,7 +228,7 @@ This algorithm is actually a two-component system in which a high-level search
 aims at finding the lengths of the paths for the different agents, while the 
 low-level search carries out the creation of the path for the various
 agents with the \textit{cost constraints} given by the high-level 
-search~\cite{MAPF_overview}~\cite{ICTS}. \newline
+search~\cite{MAPF_overview,ICTS}. \newline
 In particular, the algorithm creates a tree called \acrf{ICT} in which each 
 node contains a vector of the costs $C_i$ of the individual path of each agent
 $a_i$. The total cost of the node $C$ is given by the sum of the internal costs
@@ -253,11 +254,11 @@ the final node. This though may become very expensive as the number of possible
 paths of cost $C_i$ may be exponential. The solution proposed~\cite{ICTS} uses
 an \acrf{MDD}~\cite{MDD} which are a generalization of the binary decision
 diagrams in the sense that they allow for more than two choices for every node.
-Basically, the \acrs{MDD} has a single source node which corresponds with the
+Basically, the \acrs{MDD} has a single source node which corresponds to the
 starting node of the agent. Then, it keeps track of all the neighbors of the
-source node adding them if the path going through them can lead to the final
-node with cost $C_i$. This implies also that the \acrs{MDD} has a single sink
-and that it is the final goal of the agent. \newline
+source node adding them only if the path going through them can lead to the
+final node with cost $C_i$. This implies also that the \acrs{MDD} has a single
+sink and that it is the final goal of the agent. \newline
 The problem is then how to choose which path is best to return to the
 high-level search since a path may produce more conflicts than another leading
 to a bigger and sub-optimal \acrs{ICT}. This is done by doing the
@@ -284,6 +285,7 @@ the paths found in the combination of the \acrss{MDD}.
 \end{figure}
 %
 \subsection{\acrf{CBS}}
+\label{ssec:cbs}
 Similarly to \acrs{ICTS}, it uses two distinct search processes, a high-level 
 and a low-level one, and a tree to solve the \acrs{MAPF} problem. \newline
 The \acrs{CBS} tree is called \acrf{CT} and is composed of nodes tracking three
@@ -301,11 +303,11 @@ agent $a_i$ is not allowed to be on node $n$ at time $t$. \newline
 The protocol works in the following way: the root is built by considering the
 paths of the agents as in a \acrf{sapf} problem. Then, the high-level search
 checks for possible conflicts. Let $\pi_i$ and $\pi_j$ be the plans for agents
-$a_i, a_j$ respectively, and suppose that they have a vertex conflict at time
-$t$ on the node $n$. Then, the high-level search creates two new \acrs{CT} nodes
-from the parent, one in which agent $a_i$ \textit{cannot} be on node $n$ at
-time $t$, and the other \acrs{CT} node in which agent $a_j$ cannot be on node
-$n$ at time $t$. \newline
+$a_i$ and $a_j$ respectively, and suppose that they have a vertex conflict at
+time $t$ on node $n$. Then, the high-level search creates two new \acrs{CT}
+nodes from the parent, one in which agent $a_i$ \textit{cannot} be on node $n$
+at time $t$, and the other \acrs{CT} node in which agent $a_j$ \textit{cannot}
+be on node $n$ at time $t$. \newline
 An improvement to \acrs{CBS}~\cite{ICBS} suggests that using two positive
 constraints and a negative one may produce better results since the set of
 paths that complies with the constraints is disjoint~\cite{MAPF_overview}. This
@@ -320,31 +322,32 @@ to the problem with the new added constraints. If a feasible solution can be
 found, then the node is added to the set of nodes to be further explored. To
 pick the next node to examine, \acrs{CBS} uses the cost function of the joint
 plan. \newline
-Finally, as it regards the low-level search, it can actually be any \acrs{SAPF}
+Finally, as it regards the low-level search, it can be any \acrs{SAPF}
 algorithm, although it needs to be properly modified to support the presence of
 constraints. 
 %
 \subsection{\acrf{CP} and \acrf{MILP}}
-Constraint programming is an alternative approach to the imperative paradigm
-that is mainly used when coding~\cite{CP}. \acrs{MILP} is a mathematical
+Constraint programming is an alternative approach to the imperative paradigm,
+which is mainly used when coding~\cite{CP}. \acrs{MILP} is a mathematical
 modeling paradigm in which the decision variables are subject to some
 inequalities. These types of programming are usually divided into two parts: a
-first one called modelling that aims at shaping the aspects of the problem 
-introducing variables over specific domains and constraints over such
-variables. A second part instead is to choose how to solve the representation
-of the problem that was modelled. There are various types of solver, for
-example, one could use a \acrs{CP} solver or model the problem so that it can
-be solved with \acrf{SAT} or \acrf{MIP} solvers. \newline
+first one called modelling that addresses the shaping of the aspects of the
+problem introducing variables over specific domains and constraints over such
+variables. A second part instead aims at choosing how to solve the
+representation of the problem that was modelled. There are various types of
+solver, for example, one could use a \acrs{CP} solver or model the problem so
+that it can be solved with \acrf{SAT} or \acrf{MIP} solvers. \newline
 If the constraints are well-formed, i.e., they correctly cover the variables
 and their domains, than \acrl{cp} is both optimal and correct. A brief
-description of the constraint used in~\cite{picat} to solve the \acrs{MAPF}
+description of the constraint used in~\cite{picat1} to solve the \acrs{MAPF}
 problem is now carried out, a deeper and more precise one will be performed
 later on. The main constraints that are needed are the
 following~\cite{MAPF_overview}:
 \begin{itemize}
   \item Agents occupy only one vertex in each time step: this is to ensure that
     we are solving the classical \acrs{MAPF}, whereas a \acrs{MAPF} problem for
-    large agents may require each agent to occupy a certain amount of nodes;
+    large agents takes into consideration the fact that each agent may occupy
+    more than 1 vertex at a time;
   \item A node can be occupied by only one agent in each time step: it
     guarantees that there are no vertex conflict;
   \item Agents are positioned on their initial position at the first time step,
@@ -360,9 +363,9 @@ constraint.
 %
 \subsection{\acrs{MAPF} Variations}
 Below, a brief description of some \acrs{MAPF} variations is carried out. The
-list of possibilities is not exhaustive as it introduces only those variations
-from which some key aspects have been taken into consideration to model the
-problem this work focuses on. 
+list is not exhaustive as it introduces only those variations from which some
+key aspects have been taken into consideration to model the problem this work
+focuses on. 
 %
 \subsubsection{\acrf{MAPD}}
 The \acrf{mapd} is a problem that strictly relates to the \acrl{mapf} one. 
@@ -372,8 +375,8 @@ introduces the option for all the agent to have to meet an intermediate
 position. Indeed, in an industrial environment, robots usually need to complete
 a task by starting from an initial position then to move to an intermediate one 
 called "pickup" location and finally to reach their delivery location. \newline
-This introduces a remarkable difference from \MAPF, which can be seen as a
-one-shot version of the problem~\cite{onlineMAPD}.\newline
+This introduces a remarkable difference from \acrs{MAPF}, which can be seen as
+a one-shot version of the problem~\cite{onlineMAPD}.\newline
 Similarly to the \MAPF, also the \acrs{MAPD} problem consists of $m$ agents
 $\mathcal{A}=\{a_1,a_2,\hdots,a_m\}$ and an undirected connected graph 
 $G=(V,E)$, where $V$ is the set of the vertices, i.e., the locations, and $E$
@@ -410,7 +413,7 @@ $\tau\in\mathcal{T}$.
 \end{figure}
 \newline
 As presented up until now, the problem is as wide as possible. In this case,
-there are instances that are not solvable, for example
+there are instances that are not solvable, for example the one shown in
 Figure~\ref{fig:onlineMAPD1}. One possibility is to consider only well-formed,
 or \textit{valid}, \acrs{MAPD} instances~\cite{wellFormedMAPD}. The idea is 
 that agents can rest only on locations called \textit{non-task endpoints}, that 
@@ -422,51 +425,51 @@ the agents. Instead, the latter means that new tasks may continue to arrive and
 that no information regarding the number of the tasks, nor their structure is
 known \textit{a priori}. 
 %
-\subsubsection{Online MAPD Algorithms}
-The state-of-the-art algorithms for solving the offline \acrs{MAPD} problem are
-discussed in~\cite{onlineMAPD}, in which the authors presents two decoupled 
-algorithms (\acrf{TP} and \acrf{TPTS}) and a centralized one called
-\texttt{CENTRAL}. \newline
-\acrs{TP} and \acrs{TPTS} use a token, i.e., a synchronized shared block of
-memory, which contains the agents current paths, the task set and the agents
-assignments. A central system is in charge to pass the token to the agents
-which do the computations on their own. Indeed, the first step of the
-algorithms consists in the system initializing the token with trivial paths in
-which the agents stay on their initial locations. Then, whenever an agent 
-reaches the end of the path as described in the token, it requests the token
-from the system and chooses a new task to execute making sure that the pickup
-and delivery locations of the new task do not produce a conflict with the paths
-of the other agents. Two possibility may arise:
-\begin{itemize}
-  \item Such a task exists, then the agent chooses the task removing it from
-    the task set and updates its path in the token trying to find a path that
-    minimizes the cost while still avoiding collisions; or
-  \item there is no such task, then it checks all the tasks in the task set to
-    make sure that its current position is not a delivery location. If it
-    is not, then the token is updated with a stay path, otherwise an auxiliary
-    function is called, which will move the agent to a chosen endpoint without
-    creating conflicts. 
-\end{itemize}
-\acrs{TPTS} adds to \acrs{TP} the possibility of swapping a task if the agent
-assigned to it has not arrived to the pickup location yet. To do this, the task
-set does not contain only unassigned tasks, but also unexecuted ones. If a task
-$\tau$ is assigned to an agent $a_i$, but it is not yet been executed, then a
-second agent $a_j$ can swap in and assign itself the task. For example, this
-may be done when the latter agent can reach the pickup location in fewer steps 
-than the former. When a swap happens, $a_j$ sends the token to $a_i$ which can
-check if it can assign a new task to itself. 
+%\subsubsection{Online MAPD Algorithms}
+%The state-of-the-art algorithms for solving the offline \acrs{MAPD} problem are
+%discussed in~\cite{onlineMAPD}, in which the authors presents two decoupled 
+%algorithms (\acrf{TP} and \acrf{TPTS}) and a centralized one called
+%\texttt{CENTRAL}. \newline
+%\acrs{TP} and \acrs{TPTS} use a token, i.e., a synchronized shared block of
+%memory, which contains the agents current paths, the task set and the agents
+%assignments. A central system is in charge to pass the token to the agents
+%which do the computations on their own. Indeed, the first step of the
+%algorithms consists in the system initializing the token with trivial paths in
+%which the agents stay on their initial locations. Then, whenever an agent 
+%reaches the end of the path as described in the token, it requests the token
+%from the system and chooses a new task to execute making sure that the pickup
+%and delivery locations of the new task do not produce a conflict with the paths
+%of the other agents. Two possibility may arise:
+%\begin{itemize}
+%  \item Such a task exists, then the agent chooses the task removing it from
+%    the task set and updates its path in the token trying to find a path that
+%    minimizes the cost while still avoiding collisions; or
+%  \item there is no such task, then it checks all the tasks in the task set to
+%    make sure that its current position is not a delivery location. If it
+%    is not, then the token is updated with a stay path, otherwise an auxiliary
+%    function is called, which will move the agent to a chosen endpoint without
+%    creating conflicts. 
+%\end{itemize}
+%\acrs{TPTS} adds to \acrs{TP} the possibility of swapping a task if the agent
+%assigned to it has not arrived to the pickup location yet. To do this, the task
+%set does not contain only unassigned tasks, but also unexecuted ones. If a task
+%$\tau$ is assigned to an agent $a_i$, but it is not yet been executed, then a
+%second agent $a_j$ can swap in and assign itself the task. For example, this
+%may be done when the latter agent can reach the pickup location in fewer steps 
+%than the former. When a swap happens, $a_j$ sends the token to $a_i$ which can
+%check if it can assign a new task to itself. 
 %
 \subsubsection{Non-unitary edges}
 As said in Section~\ref{sec:MAPF}, classical \acrs{mapf} considers an
 undirected graph with edges that have unitary cost, that is, the cost of an
 action is always one when computing the objective function, independently by
-the fact that the agent moved over and edge or stayed on a node. This
-introduces a constraint regarding the possible movements of the agents. Indeed,
-the main problem with having edges with different costs is the fact that agents
-may conclude their actions in different times causing only a portion of the
-action to overlap. A solution has been proposed in~\cite{EICTS} showing great 
-results when applied to the \acrs{ICTS} algorithm proposing two new variations
-called $\varepsilon-$\acrs{ICTS} and $\omega-$\acrs{ICTS}. \newline
+the fact that the agent moved over an edge or stayed on a node. This introduces
+a constraint regarding the possible movements of the agents. Indeed, the main
+problem with having edges with different costs is the fact that agents may
+conclude their actions in different times causing only a portion of the action
+to overlap. Walker et al. proposed a solution showing great results when
+applied to the \acrs{ICTS} algorithm proposing two new variations called
+$\varepsilon-$\acrs{ICTS} and $\omega-$\acrs{ICTS}~\cite{EICTS}. \newline
 Both algorithms consider an agent either staying on the vertex or moving from
 one vertex to another traversing an edge at constant speed. A collision is
 defined as the condition for which one or more agents overlap at the same
@@ -474,18 +477,18 @@ instant of time. The collision check is done by considering only agents with
 partial time overlaps and then by running a continuous-time conflict detection
 algorithm for moving agents~\cite{collision_detection}. \newline
 Then, the multi-value decision diagram of the low-level search of \acrs{ICTS}
-needs to be changed to account for different costs and especially the fact that
-non-unitary costs may lead to have multiple sink. For example, looking at
-Figure~\ref{fig:eICTS}, it is possible to notice that a 4-connected grid, that
-is the nodes are connected only upwards, leftward, rightward and downwards,
-generate only one sink for the goal node at a given time, whereas if the graph
-was fully connected, then the possible sink in a given interval could be more
-than one. This problem depends on the value set to discretize the increment of
-time. Indeed, if the value is small, the possibility of finding multiple sinks
-in the graph in an interval of time is smaller, but at the same time the depth
-of the graph will increase. On the contrary, a larger value of the increment
-may lead to a higher probability of finding multiple sinks, but to a smaller
-graph. \newline
+needs to be changed to account for different costs and especially for the fact
+that non-unitary costs may lead to have multiple sink. For example, looking at
+Figure~\ref{fig:eICTS}, it is possible to notice that a 4-connected
+grid\footnote{A 4-connected grid is a grid where the nodes are connected only
+upwards, leftward, rightward and downwards} generates only one sink for the
+goal node at a given time, whereas if the graph was fully connected, then the
+possible sink in a given interval could be more than one. This problem depends
+on the value set to discretize the increment of time. Indeed, if the value is
+small, the possibility of finding multiple sinks in the graph in an interval of
+time is smaller, but at the same time the depth of the graph will increase. On
+the contrary, a larger value of the increment may lead to a higher probability
+of finding multiple sinks, but to a smaller graph. \newline
 Some changes had to be made also to the high-level search. In the original
 protocol, the nodes would keep track of only the cost of the paths for each
 agent. In the extended versions, each node keeps track of a lower and an upper
@@ -517,7 +520,7 @@ provide the following improvements:
     \centering
     \includegraphics[width=0.7\linewidth]{ICTSNonUnit2}
     \caption{On the right, instead, we consider the variation in which the
-      graph is fully connected, so there are some edges which have not weight 
+      graph is fully connected, so there are some edges which weigh more than
       one. In particular, from the image on the right, it is possible to see 
       that the cost increment is one, then in the interval $[3-4]$ there are 3 
       different sinks for the goal position. In case the cost increment is 

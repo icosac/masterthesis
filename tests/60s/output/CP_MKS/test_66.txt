@@ -1,0 +1,2 @@
+Testing file: tests/test_66.json
+TDSP2 (8, 0, 0) (8, 0, 0)

@@ -1,0 +1,235 @@
+Testing file: tests/test_61.json
+TDSP2 (10, 0, 0) (6, 0, 0)
+Found path from (10, 0, 0) to (6, 0, 0)
+(10, 0, 0) (2, 0, 0) (6, 0, 0) 
+(10, 0, 0) (10, 0, 0) (6, 0, 0) (1, 0, 0) (10, 0, 0) (2, 0, 0) (6, 0, 0) (2, 0, 0) (1, 0, 0) (0, 0, 0) 
+TDSP2 (6, 0, 0) (1, 0, 0)
+Found path from (6, 0, 0) to (1, 0, 0)
+(6, 0, 0) (7, 0, 0) (5, 0, 0) (1, 0, 0) 
+(5, 0, 0) (3, 0, 0) (6, 0, 0) (5, 0, 0) (7, 0, 0) (0, 0, 0) (6, 0, 0) (2, 0, 0) (5, 0, 0) (1, 0, 0) 
+TDSP2 (8, 0, 0) (5, 0, 0)
+Found path from (8, 0, 0) to (5, 0, 0)
+(8, 0, 0) (6, 0, 0) (7, 0, 0) (5, 0, 0) 
+(8, 0, 0) (3, 0, 0) (6, 0, 0) (1, 0, 0) (7, 0, 0) (8, 0, 0) (6, 0, 0) (0, 0, 0) (1, 0, 0) (1, 0, 0) 
+TDSP2 (5, 0, 0) (2, 0, 0)
+Found path from (5, 0, 0) to (2, 0, 0)
+(5, 0, 0) (2, 0, 0) 
+(5, 0, 0) (5, 0, 0) (6, 0, 0) (5, 0, 0) (0, 0, 0) (2, 0, 0) (6, 0, 0) (2, 0, 0) (5, 0, 0) (1, 0, 0) 
+Testing solution 6
+No solution found with steps: 6
+Testing solution 16
+Solution found with steps: 16
+ --------------------------------------------------
+Solution status: Optimal
+
+Solution found:
+ Objective value = 4
+
+--------------------------------------------------
+Step 0
+0 0 0 0 0 0 0 7 0 9 
+Step 1
+0 1 0 0 0 0 0 7 0 0 
+Step 2
+0 0 0 0 0 5 0 7 0 0 
+Step 3
+0 0 2 0 0 0 0 7 0 0 
+Step 4
+0 0 2 0 0 0 0 7 0 0 
+Step 5
+0 1 0 0 0 0 0 7 0 0 
+Step 6
+0 0 0 0 0 5 0 7 0 0 
+Step 7
+0 0 2 0 0 0 0 0 0 0 
+Step 8
+0 0 2 0 0 0 0 0 0 9 
+Step 9
+0 0 2 0 0 0 0 0 0 9 
+Step 10
+0 0 2 0 4 0 0 0 0 0 
+Step 11
+0 0 2 0 4 0 0 0 0 0 
+Step 12
+0 1 0 0 4 0 0 0 0 0 
+Step 13
+0 0 0 0 4 0 0 7 0 0 
+Step 14
+0 0 0 0 4 0 0 7 0 0 
+Step 15
+0 1 0 0 0 0 0 0 0 0 
+--------------------------------------------------
+Step 0 0 16
+0 0 0 0 
+- - 0 -
+- 0 0 2 0 1 
+Step 1 0 16
+0 1 0 0 
+- - 0 -
+- 0 0 2 0 0 
+Step 2 0 16
+0 0 0 0 
+- - 0 -
+- 1 0 2 0 0 
+Step 3 0 16
+0 0 1 0 
+- - 0 -
+- 0 0 2 0 0 
+Step 4 0 16
+0 0 1 0 
+- - 0 -
+- 0 0 2 0 0 
+Step 5 0 16
+0 1 0 0 
+- - 0 -
+- 0 0 2 0 0 
+Step 6 0 16
+0 0 0 0 
+- - 0 -
+- 1 0 2 0 0 
+Step 7 0 16
+2 0 1 0 
+- - 0 -
+- 0 0 0 0 0 
+Step 8 0 16
+0 0 1 0 
+- - 0 -
+- 0 0 0 0 2 
+Step 9 0 16
+0 0 1 0 
+- - 0 -
+- 0 0 0 0 2 
+Step 10 0 16
+0 0 1 0 
+- - 2 -
+- 0 0 0 0 0 
+Step 11 0 16
+0 0 1 0 
+- - 2 -
+- 0 0 0 0 0 
+Step 12 0 16
+0 1 0 0 
+- - 2 -
+- 0 0 0 0 0 
+Step 13 0 16
+0 0 0 0 
+- - 2 -
+- 0 0 1 0 0 
+Step 14 0 16
+0 0 0 0 
+- - 2 -
+- 0 0 1 0 0 
+Step 15 0 16
+1 2 0 0 
+- - 0 -
+- 0 0 0 0 0 
+--------------------------------------------------
+agent 0 : 
+10 2 6 3 3 2 6 3 3 3 3 3 2 8 8 1 
+agent 1 : 
+8 8 8 8 8 8 8 1 10 10 5 5 5 5 5 2 
+--------------------------------------------------
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+Tried aggregator 2 times.
+MIP Presolve eliminated 2129 rows and 5036 columns.
+MIP Presolve modified 8 coefficients.
+Aggregator did 9302 substitutions.
+Reduced MIP has 9123 rows, 7979 columns, and 25193 nonzeros.
+Reduced MIP has 3518 binaries, 0 generals, 0 SOSs, and 2 indicators.
+Presolve time = 0.04 sec. (134.58 ticks)
+Probing fixed 7 vars, tightened 1587 bounds.
+Probing changed sense of 28 constraints.
+Probing time = 0.08 sec. (34.85 ticks)
+Tried aggregator 4 times.
+MIP Presolve eliminated 3235 rows and 2510 columns.
+MIP Presolve added 17 rows and 0 columns.
+MIP Presolve modified 504 coefficients.
+Aggregator did 2936 substitutions.
+Reduced MIP has 2969 rows, 2510 columns, and 9077 nonzeros.
+Reduced MIP has 2510 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (27.01 ticks)
+Probing time = 0.00 sec. (3.84 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 2969 rows, 2510 columns, and 9077 nonzeros.
+Reduced MIP has 2510 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (7.69 ticks)
+Probing time = 0.00 sec. (3.80 ticks)
+Clique table members: 5920.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 16 threads.
+Root relaxation solution time = 0.04 sec. (23.18 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            8.0000        0.0000           100.00%
+      0     0        0.0000  1085        8.0000        0.0000      505  100.00%
+*     0+    0                            4.0000        0.0000           100.00%
+      0     0        0.0000   743        4.0000     Cuts: 159      646  100.00%
+      0     0        0.0000   830        4.0000     Cuts: 140      782  100.00%
+      0     0        0.0000   724        4.0000     Cuts: 180      932  100.00%
+      0     0        0.0000   525        4.0000     Cuts: 148     1029  100.00%
+      0     0        0.0000   717        4.0000     Cuts: 153     1308  100.00%
+Detecting symmetries...
+Detecting symmetries...
+      0     2        0.0000   717        4.0000        0.0000     1308  100.00%
+Elapsed time = 0.77 sec. (561.94 ticks, tree = 0.02 MB, solutions = 2)
+    821   415        0.1111   600        4.0000        0.0000    24523  100.00%
+   1854   870        1.1250   417        4.0000        0.0000    49511  100.00%
+   2940  1336        1.0000   701        4.0000        0.3333    84528   91.67%
+   4285  1760        2.5000   140        4.0000        1.0000   116515   75.00%
+   5209  1989        1.5000   540        4.0000        1.0000   152318   75.00%
+   5780  2264        1.4455   648        4.0000        1.0000   194400   75.00%
+   6303  2455        1.0000   293        4.0000        1.0000   225624   75.00%
+
+Performing restart 1
+
+Repeating presolve.
+Tried aggregator 2 times.
+MIP Presolve eliminated 1 rows and 0 columns.
+MIP Presolve modified 9 coefficients.
+Aggregator did 2 substitutions.
+Reduced MIP has 2966 rows, 2508 columns, and 9066 nonzeros.
+Reduced MIP has 2508 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (8.00 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 1 rows and 1 columns.
+Reduced MIP has 2965 rows, 2507 columns, and 9063 nonzeros.
+Reduced MIP has 2507 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (11.80 ticks)
+Represolve time = 0.06 sec. (43.11 ticks)
+   6306     0        0.0886  1355        4.0000     Cuts: 167   242587   75.00%
+   6306     0        0.2015  1371        4.0000      Cuts: 96   242814   75.00%
+   6306     0        0.3069  1564        4.0000      Cuts: 87   243087   75.00%
+   6306     0        0.3456  1458        4.0000     Cuts: 117   243319   75.00%
+   6306     0        0.4164  1225        4.0000     Cuts: 185   243560   75.00%
+   6306     0        0.4300  1301        4.0000     Cuts: 154   243721   75.00%
+   6306     0        0.4426  1276        4.0000      Cuts: 35   243906   75.00%
+   6306     0        0.4578  1306        4.0000      Cuts: 53   244201   75.00%
+   6306     0        0.4632  1344        4.0000     Cuts: 179   244367   75.00%
+   6306     0        0.4651  1485        4.0000      Cuts: 59   244495   75.00%
+   6306     2        0.4651  1485        4.0000        1.0000   244495   75.00%
+   6319     8        2.7500   256        4.0000        1.0000   247874   75.00%
+   6807     8        1.6667   955        4.0000        1.2000   317572   70.00%
+Elapsed time = 7.90 sec. (5895.82 ticks, tree = 0.02 MB, solutions = 2)
+
+GUB cover cuts applied:  19
+Clique cuts applied:  12
+Cover cuts applied:  42
+Implied bound cuts applied:  15
+Mixed integer rounding cuts applied:  17
+Zero-half cuts applied:  68
+Gomory fractional cuts applied:  6
+
+Root node processing (before b&c):
+  Real time             =    0.73 sec. (561.11 ticks)
+Parallel b&c, 16 threads:
+  Real time             =    7.25 sec. (5376.20 ticks)
+  Sync time (average)   =    2.43 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    7.98 sec. (5937.31 ticks)
+
+Solution computed in: 8080.8 with 10 more steps required
