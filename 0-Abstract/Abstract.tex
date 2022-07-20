@@ -1,19 +1,34 @@
 \chapter{Abstract}
 \label{ch:abstract}
-Robotics is emerging has being one of the most critical aspects of the
-industrial revolution, allowing for improvements in various scenarios. In
-particular, in this thesis we will focus on the motion planning for multiple
-robots with a real warehouse located in the center of Italy as the main
-scenario. \newline
-First, we start with a description of the state-of-the-art algorithm used to
-solve the \acrf{MAPF} problem, showing their strengths and their weak spots.
-\newline
-Then, we move to the description of three algorithms we have implemented to
-tackle the aforementioned problem explaining the modification we had to make to
-the algorithms in order to be able to use them in our scenario. \newline
-The description of the tests created to examine their characteristics follows.
-Moreover, we explain how we divided the warehouse map in order to create tests
-of increasingly difficulty. \newline
-Finally a discussion on the results and the future work that may come with it
-is carried out. 
-
+The new industrial revolution is proving the critical role of robotics in
+industry and also in the everyday life, allowing for considerable
+improvements in various scenarios. In particular, in this thesis we will focus
+on the motion planning for multiple robots by using a real warehouse located in
+the center of Italy as the main scenario. \newline
+The \acrf{MAPF} problem amounts to finding the best paths for a group of
+robots to navigate an environment, which is usually modelled as a graph.
+First, we start with a description of the state-of-the-art algorithms used to
+solve the \acrf{SAPF} problem since they are used as a building block for many
+algorithms solving the \acrs{MAPF} problem. After that we move to a precise
+description of the algorithms that solve the main problem showing their
+strengths and their weak spots. In particular, we focus on the description of
+correct and optimal solvers, i.e., solvers that are guaranteed to return an
+optimal solution. Next we propose a concise review of some variants of the
+classical \acrs{MAPF} problem explaining which aspects are taken from each
+variant to model our problem on the warehouse. \newline
+Then, we describe the three algorithms we have chosen and implemented to tackle
+the aforementioned problem explaining the modification we had to make to them
+in order to be used in our scenario. Two of these
+are based on the same \acrs{MAPF} algorithm, but they use different
+internal solvers as it will be more clear later on. Finally the third algorithm
+is based on constraint programming, which differs from all the other
+implementations. \newline
+After that, we describe the way random tests were generated in order to respect
+some limitations of the problem and to produce a series of tests of increasing
+difficulty. We also delineate a suite of tests taken from the warehouse map,
+explaining which alterations had to be made. \newline
+Next a discussion on the results and the future work that may come with it
+is carried out. The results show the implemented algorithm's limitations, from
+the analysis of which we describe a particularly difficult case. Eventually, we
+propose some modifications to the algorithms that may improve the performance
+and the number of cases they manage to solve.

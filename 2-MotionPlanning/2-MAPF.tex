@@ -206,7 +206,7 @@ the agents will all have changed their position. The algorithm proposes a
 different representation of the state space in which vertexes that represent
 the positions of all agents at the same time are called \textbf{full vertexes}
 and are the ones that happen every $k$ moves, while all the other vertexes are 
-called \textbf{intermediate vertexes}~\cite{ODandIDM,APF_overview}. This
+called \textbf{intermediate vertexes}~\cite{ODandID,MAPF_overview}. This
 allows to have a branching factor of 
 $O\left(k\times\frac{\abs{E}}{\abs{V}}\right)$, which is not exponential.
 Moreover, it is important to notice that the heuristic used in \astar may help
@@ -425,39 +425,39 @@ the agents. Instead, the latter means that new tasks may continue to arrive and
 that no information regarding the number of the tasks, nor their structure is
 known \textit{a priori}. 
 %
-%\subsubsection{Online MAPD Algorithms}
-%The state-of-the-art algorithms for solving the offline \acrs{MAPD} problem are
-%discussed in~\cite{onlineMAPD}, in which the authors presents two decoupled 
-%algorithms (\acrf{TP} and \acrf{TPTS}) and a centralized one called
-%\texttt{CENTRAL}. \newline
-%\acrs{TP} and \acrs{TPTS} use a token, i.e., a synchronized shared block of
-%memory, which contains the agents current paths, the task set and the agents
-%assignments. A central system is in charge to pass the token to the agents
-%which do the computations on their own. Indeed, the first step of the
-%algorithms consists in the system initializing the token with trivial paths in
-%which the agents stay on their initial locations. Then, whenever an agent 
-%reaches the end of the path as described in the token, it requests the token
-%from the system and chooses a new task to execute making sure that the pickup
-%and delivery locations of the new task do not produce a conflict with the paths
-%of the other agents. Two possibility may arise:
-%\begin{itemize}
-%  \item Such a task exists, then the agent chooses the task removing it from
-%    the task set and updates its path in the token trying to find a path that
-%    minimizes the cost while still avoiding collisions; or
-%  \item there is no such task, then it checks all the tasks in the task set to
-%    make sure that its current position is not a delivery location. If it
-%    is not, then the token is updated with a stay path, otherwise an auxiliary
-%    function is called, which will move the agent to a chosen endpoint without
-%    creating conflicts. 
-%\end{itemize}
-%\acrs{TPTS} adds to \acrs{TP} the possibility of swapping a task if the agent
-%assigned to it has not arrived to the pickup location yet. To do this, the task
-%set does not contain only unassigned tasks, but also unexecuted ones. If a task
-%$\tau$ is assigned to an agent $a_i$, but it is not yet been executed, then a
-%second agent $a_j$ can swap in and assign itself the task. For example, this
-%may be done when the latter agent can reach the pickup location in fewer steps 
-%than the former. When a swap happens, $a_j$ sends the token to $a_i$ which can
-%check if it can assign a new task to itself. 
+\subsubsection{Online MAPD Algorithms}
+The state-of-the-art algorithms for solving the offline \acrs{MAPD} problem are
+discussed in~\cite{onlineMAPD}, in which the authors presents two decoupled 
+algorithms (\acrf{TP} and \acrf{TPTS}) and a centralized one called
+\texttt{CENTRAL}. \newline
+\acrs{TP} and \acrs{TPTS} use a token, i.e., a synchronized shared block of
+memory, which contains the agents current paths, the task set and the agents
+assignments. A central system is in charge to pass the token to the agents
+which do the computations on their own. Indeed, the first step of the
+algorithms consists in the system initializing the token with trivial paths in
+which the agents stay on their initial locations. Then, whenever an agent 
+reaches the end of the path as described in the token, it requests the token
+from the system and chooses a new task to execute making sure that the pickup
+and delivery locations of the new task do not produce a conflict with the paths
+of the other agents. Two possibility may arise:
+\begin{itemize}
+  \item Such a task exists, then the agent chooses the task removing it from
+    the task set and updates its path in the token trying to find a path that
+    minimizes the cost while still avoiding collisions; or
+  \item there is no such task, then it checks all the tasks in the task set to
+    make sure that its current position is not a delivery location. If it
+    is not, then the token is updated with a stay path, otherwise an auxiliary
+    function is called, which will move the agent to a chosen endpoint without
+    creating conflicts. 
+\end{itemize}
+\acrs{TPTS} adds to \acrs{TP} the possibility of swapping a task if the agent
+assigned to it has not arrived to the pickup location yet. To do this, the task
+set does not contain only unassigned tasks, but also unexecuted ones. If a task
+$\tau$ is assigned to an agent $a_i$, but it is not yet been executed, then a
+second agent $a_j$ can swap in and assign itself the task. For example, this
+may be done when the latter agent can reach the pickup location in fewer steps 
+than the former. When a swap happens, $a_j$ sends the token to $a_i$ which can
+check if it can assign a new task to itself. 
 %
 \subsubsection{Non-unitary edges}
 As said in Section~\ref{sec:MAPF}, classical \acrs{mapf} considers an

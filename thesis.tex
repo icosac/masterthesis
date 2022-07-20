@@ -1,4 +1,4 @@
-\documentclass [12pt] {book}
+\documentclass [11pt] {book}
 %\pdfpagewidth\paperwidth
 %\pdfpageheight\paperheight
 \usepackage[utf8]{inputenc}
@@ -8,8 +8,8 @@
 \usepackage{graphicx}
 \usepackage{graphbox}
 \usepackage{mathtools}
-%\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=2.5cm,headsep=10pt,a4paper]{geometry} % Page margins
-\usepackage[top=3cm,bottom=3cm,left=2.5cm,right=2.5cm,a4paper]{geometry} % Page margins
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=1.5cm,headsep=10pt,a4paper]{geometry} % Page margins
+%\usepackage[top=3cm,bottom=3cm,left=2.5cm,right=2.5cm,a4paper]{geometry} % Page margins
 \usepackage{color}
 \usepackage{amsmath, amsfonts, amsthm}
 \usepackage[T1]{fontenc}
@@ -33,6 +33,7 @@
 \usepackage{bm}
 \usepackage[makeroom]{cancel}
 \usepackage[ruled, vlined]{algorithm2e}
+\usepackage{afterpage}
 
 \usepackage{colortbl, xcolor} %Colored cells in tabular
 \usepackage{arydshln} %dashed lines in tabular
@@ -189,6 +190,14 @@ frame code={\path[draw=mintedframe, fill=mintedbackground](frame.south west) rec
 
 \usepackage{commands}
 
+\captionsetup{belowskip=4pt}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 \begin{document}
 
 
@@ -196,10 +205,16 @@ frame code={\path[draw=mintedframe, fill=mintedbackground](frame.south west) rec
 	%%%Initial page
 	\pagenumbering{gobble} 
 	\input{initial_page}
-	\clearpage
+  \clearpage
+  \ %Empty page
+  \newpage
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \input{acknowledgments}
   \clearpage
+  \clearpage
+  \ %Empty page
+  \newpage
   \pagestyle{plain}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
